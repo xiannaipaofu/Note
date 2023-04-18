@@ -609,16 +609,7 @@
                     "strict": false,  //所有严格检查总开关
                 }
             }
-
-    webpack打包
-            npm init -y  //初始化
-            npm i -D webpack webpack-cli typescript ts-loader  //下载依赖包
-            编写ts配置文件
-            编写webpack配置文件
-                npm i -D html-webpack-plugin  //自动生成html文件
-                npm i -D webpack-dev-server  //开发服务器，npm start
-                npm i -D @babel/core @babel/preset-env babel-loader core-js
-
+            
     面向对象
         类
             public  //公用属性（默认）
