@@ -19,6 +19,10 @@
 
     # HTTP（hypertext transport protocol）协议[超文本传输协议]，协议详细规定了浏览器和万维网服务器之间互相通信的规则。
 
+    信息响应(100–199)，成功响应(200–299)，重定向(300–399)，客户端错误(400–499)和服务器错误 (500–599)：
+    200 - 请求成功，301 - 资源（网页等）被永久转移到其它URL，404 - 请求的资源（网页等）不存在，500 - 内部服务器错误
+    https://www.runoob.com/http/http-status-codes.html
+
     # 请求报文
 
         行      GET/POST（请求类型）    /s?ie=utf-8（url路径）     HTTP/1.1（协议版本）
@@ -32,7 +36,7 @@
     # 响应报文
 
         行      HTTP/1.1(协议版本)      200（响应状态码）       OK（响应状态字符串）
-        头      Content-Type: text/html;charset=utf-8（类型）(对响应体做相关描述)
+        头      Content-Type: text/html;charset=utf-8（类型）(对响应体做相关描述) https://www.runoob.com/http/http-header-fields.html
                 Content-length: 2048（长度）
                 Content-encoding: gzip（压缩类型）
         空行

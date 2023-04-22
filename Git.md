@@ -1,6 +1,6 @@
 ## Git
-    https://www.runoob.com/git/git-tutorial.html
     http://git-scm.com/docs/git-log
+
     ssh-keygen -t rsa -Cgit@github.com:xiannaipaofu/demo.git  //生成安全认证  
  
     git init  //初始化仓库
@@ -37,14 +37,5 @@
 
     gitee  //国内仓库
     IDEA  //集成仓库
-    
-## linux
-    linux:  /根目录
 
-    指令:   
-    cd xx       跳转
-    ls          查看
-    vim xxxx    编辑文件
-    mkdir xxx   创建文件夹
-    pwd         查看绝对路径
 

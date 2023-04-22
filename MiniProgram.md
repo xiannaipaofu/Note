@@ -1,5 +1,4 @@
 ## 微信小程序
-
     1vh = 1%的视口高度
 
     绑定事件
@@ -15,30 +14,6 @@
     event
         指南--小程序框架--事件系统
             event.touches[0].clientY;  //获取坐标(数组代表可能多个手指同时点击)
-
-   * 生命周期函数--监听页面加载
-    onLoad(options) {},
-
-   * 生命周期函数--监听页面初次渲染完成
-    onReady() {},
-
-   * 生命周期函数--监听页面显示
-    onShow() {},
-
-   * 生命周期函数--监听页面隐藏
-    onHide() {},
-
-   * 生命周期函数--监听页面卸载
-    onUnload() {},
-
-   * 页面相关事件处理函数--监听用户下拉动作
-    onPullDownRefresh() {},
-
-   * 页面上拉触底事件的处理函数
-    onReachBottom() {},
-
-   * 用户点击右上角分享
-    onShareAppMessage() {}
 
     微信授权getUserProfile
             wx.getUserProfile({
@@ -165,7 +140,5 @@
             加密库
 
     分包
-
-    86-94 服务器
 
     

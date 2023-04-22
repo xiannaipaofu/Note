@@ -4,7 +4,6 @@
     prompt();  提示框
 
     "use strict";  严格模式
-
     debugger;  断点、调试代码
 
     # 数据类型
@@ -23,41 +22,37 @@
             RegExp   正则
             Date     日期
     # 数组
-        .length  //数组的长度
-        
-        .concat();  连接两个数组
         .entries();  返回数组可迭代对象
-        .every()  监测数值元素的每个元素是否都符合条件
-        .fill('', 0, 2)  填充数组
+        .from()  通过给定对象中创建一个数组
+        .flat(2)  将多维数组转换成低维数组，参数为深度
 
         .filter((item) => { arr2.has(item)})  //过滤器   .has//筛选所匹配的值
         .find((item) => {})  //返回第一个所匹配的值
         .findIndex(item => )  //返回所匹配元素的下标
-        .forEach((item) => {})  //遍历数组里的每个元素并执行一遍回调
         .every((item) => {})  遍历每一个数组是否符合条件，全符合为true,否则false
+        .forEach((item) => {})  //遍历数组里的每个元素并执行一遍回调  //修改原数组
+        .map((item) => {})  通过指定函数处理每个元素，并返回处理后的数组  //不修改原数组，返回新数组
         
-        .from()  通过给定对象中创建一个数组
         .includes()  判断数组是否包含某个值
         .indexOf()  返回指定的字符串值首次出现的位置。如果没有找到匹配的字符串则返回 -1。
         .isArray()   判断是否为数组
-        .join()  把数组每个元素放入一个字符串
-        .map()  通过指定函数处理每个元素，并返回处理后的数组
         .some()  检测数组元素中是否含有符合指定条件，返回布尔值
-        .flat(2)  将多维数组转换成低维数组，参数为深度
+
+        .concat();  连接两个数组
+        .fill('', 0, 2)  填充数组
+        .join()  把数组每个元素放入一个字符串
 
         .unshift()  向数组开头添加元素
-        .push()  向数组末尾添加一个元素，并返回新的数组
         .shift()  删除数组的第一个元素并返回新数组
+        .push()  向数组末尾添加一个元素，并返回新的数组
         .pop()  删除最后一个元素并返回数组
         .reverse()  反转数组顺序
         .sort()  数组排序
         .slice()  选取数组的一部分，并返回新数组
         .splice(1, 1, '')  添加或删除元素
 
-        2 ** 10  幂运算,与Math.pow(2, 10)相同
-
         Number()           将字符串转换为数字
-        Number.EPSILON      js表示的最小精度
+        Number.EPSILON     js表示的最小精度
         Number.isFinite()  判断是否为有限数
         Number.isNaN()     判断是否为非数
         Number.isInteger() 判断是否为整数
@@ -72,29 +67,24 @@
             .min()  返回最低值
             .pow(x, y)  返回x的y次幂
             .random()  1~0之间的随机数
-            .sqrt()  返回数的平方根
             .trunc()       去掉小数部分
             .sign()        判断为正数 负数 还是零
     
     # 字符串
         属性
             constructor  返回创建字符串属性的函数
-            lenght  字符串长度
             prototype  向对象添加属性方法
 
         方法
-            trim()          去除首尾空白
+            trim()  去除首尾空白
+            toString()  返回字符串对象值
 
             charAt()  返回指定索引位置的字符
             concat()  连接字符串并返回
-            indexOf()  返回指定字符第一次出现的索引值,如果没找到则返回-1
             lastlndexOf()  返回指定字符最后一次出现的索引值
-            match()         找到一个或多个正则表达式的匹配
-            replace()       替换与正则表达式匹配的字符串
-            search()        检索与正则表达式相匹配的值
             toLowerCase()   转小写
             toUpperCase()   转大写
-            toString()      返回字符串对象值
+
             valueOf()       返回某个字符串对象的原始值
             
             trimStart()     去除左侧
@@ -102,6 +92,18 @@
             split()         字符串转化  p.split(':')[2] 以：分割，取索引为2的值
 
             matchAll()      数据批量提取
+
+    # 对象扩展
+        Object.is(a, b)    判断两个值是否相等
+        Object.assign(obj1, obj2)  覆盖对象
+        Object.setPrototypeOf(obj1, obj2)  给对象添加原型对象
+        Object.getPrototypeOf(obj1)   读取对象
+        
+        Object.entries()  返回对象可遍历属性[key, value]的数组
+        Object.getOwnPropertyDescriptors(obj)  获取对象属性的描述对象
+
+        Object.fromEntries()  将二维数组转换成对象
+        Object.entries()      将对象转换成二维数组
 
     # 日期
         milliseconde  时间戳
@@ -111,14 +113,10 @@
         https://www.runoob.com/jsref/jsref-obj-regexp.html
 
     # 函数
-        arguments  实参列表
-
         # this指向
-            call()、apply()、bind()
-
-            obj.myFun.call(obj, 'xx', 'xx')
-            obj.myFun.apply(obj, ['xx', 'xx'])
-            obj.myFun.bind(obj, 'xx', 'xx')()  //返回函数
+            myFun.call(obj, 'xx', 'xx')
+            myFun.apply(obj, ['xx', 'xx'])
+            myFun.bind(obj, 'xx', 'xx')()  //返回函数
 
     # 全局
         eval()  计算字符串，并作为脚本代码执行
@@ -134,17 +132,6 @@
             }
         instanceof  //判断一个属性是否存在一个对象身上
             value instanceof Promise
-
-    
-    #for循环
-        break;  //终止循环
-        continue;  //结束本次循环
-
-        do while 循环
-            先执行一次再判断
-                do{
-                    xxx
-                }wihle();
 
     # JSON
         JSON.parse(data)  将JSON转换成字符串
@@ -169,18 +156,13 @@
         document.cookie="username=";  删除
         expires=Thu, 18 Dec 2043 12:00:00 GMT;  添加过期时间
 
-
 ## 事件
     event.target  触发事件的元素
-
-    onload  用户在进入页面时触发
-    onunload  用户在离开页面时触发
 
     # 鼠标事件
         click  鼠标单击
         dblclick  双击
         contextmenu  点击鼠标右键
-
         mousedown  鼠标按钮被按下
         mouseup  鼠标按键被松开
 
@@ -209,11 +191,6 @@
         select     选取文本时
         submit     提交表单时
 
-    # 事件冒泡
-        capturing-phase 捕获阶段
-        at-target  目标阶段
-        bubbling-phase  冒泡阶段
-
     #事件传播
         event.stopPropagation();  //阻止事件传播
         event.preventDefault()  取消默认行为
@@ -234,9 +211,6 @@
         removeEventListener()  移除事件
 
 ## Dom Document对象
-    # 节点
-        文档节点、元素节点div、文本节点text、属性节点href、注释节点
-
     # 获取元素
         document.getElementsByClassName();  //获取所有指定类名的元素（[0]获取第一个元素）
         document.getElementById();  //返回指定 ID 的元素
@@ -246,14 +220,9 @@
         document.querySelector();  //返回文档中匹配指定CSS选择器的一个元素
         document.querySelectorAll()；  //返回所有的元素
 
-        document.createElement()	创建元素节点。
-        document.createTextNode()	创建文本节点。
-        document.renameNode()	重命名元素或者属性节点
-
         .parentNode();  某元素的父节点
         .childNodes();  某元素的子节点
         .attributes();  元素的属性节点
-        .firstChild     元素的首个节点
         .lastChild	    返回最后一个子节点
 
         .innerHTML();  //向标签放入文本或标签
@@ -272,13 +241,12 @@
         .getAttribute();  返回指定的属性值
         .className='value';  //给标签设置class属性
         .children	返回元素的子元素的集合
-        .style  修改样式
+
         element.firstElementChild	返回元素的第一个子元素
-        element.focus()	设置文档或元素获取焦点
+        element.focus()	获取焦点
         element.hasAttribute()	如果元素中存在指定的属性返回 true，否则返回false。
         element.previousSibling	返回某个元素紧接之前元素
-        element.nextSibling	返回指定元素之后的下一个兄弟元素（相同节点树层中的下一个元素节点）。
-        element.parentNode	返回元素的父节点
+        element.nextSibling	返回指定元素之后的下一个兄弟元素
         element.tagName	作为一个字符串返回某个元素的标记名（大写）
         element.textContent	设置或返回一个节点和它的文本内容
         element.title	设置或返回元素的title属性
@@ -296,11 +264,6 @@
         element.scrollTop	实际元素的顶部边缘和顶部边缘之间的距离
         element.scrollWidth	返回元素的整个宽度（包括带滚动条的隐蔽的地方）
 
-    # 属性
-        nodeName    节点名称
-        nodeValue   节点值
-        nodeType  文本9、注释8、文本3、属性2、元素1
-
 ##  BOM
     # Window
         window.location.href = ''  //页面跳转
@@ -317,12 +280,6 @@
 
         window.innerHeight - 浏览器窗口的内部高度(包括滚动条)document.body.clientHeight
         window.innerWidth - 浏览器窗口的内部宽度(包括滚动条)document.body.clientWidth
-
-        window.open() - 打开新窗口
-        window.close() - 关闭当前窗口
-
-        history.back() - 与在浏览器点击后退按钮相同
-        history.forward() - 与在浏览器中点击向前按钮相同   
 
 ## ES6
     # rest参数
@@ -347,21 +304,8 @@
             
             Symbol.prototype.description  获取symblo字符串描述
 
-        BigInt类型
-            let n = 521;
-            BigInt(n) => 521n
-
-    # 迭代器
-        fon of 循环原理
-
-    # 生成器函数
-        function* gen(){
-            yield xxx;  //函数分割线
-        }
-        gen.next();
-
     # set集合
-        自带数组去重
+        数组去重
         let s = new Set();
 
     # Map集合
@@ -369,23 +313,6 @@
         let m = new Map();
         let school = {name: '学校'}
         m.set(school, 'xxx')
-
-    # async函数
-        函数返回值为Promise对象，其结果由函数返回值决定/与then方法一样
-        async function main(){
-            try{
-            let result = await p;
-            }catch(e){
-            console.log(e)
-            }
-        }
-        main();
-
-        await右侧为Promise对象则返回其成功的值
-        await右侧为其他值，则直将此值作为await的返回值
-        await的promise失败了，就会抛出异常，需要通过try...catch捕获处理
-
-        注：如await的Promise失败了，就会抛出异常，则需要通过try...catch来捕获
 
     #calss 类
         calss Promise{
@@ -409,27 +336,14 @@
                 }
             }
 
-    # 对象扩展
-        Object.is(a, b)    判断两个值是否相等
-        Object.assign(obj1, obj2)  覆盖对象
-        Object.setPrototypeOf(obj1, obj2)  给对象添加原型对象
-        Object.getPrototypeOf(obj1)   读取对象
-        
-        Object.keys(boj)  获取对象所有的键
-        Object.values()   获取对象所有的值
-        Object.entries()  返回对象可遍历属性[key, value]的数组
-        Object.getOwnPropertyDescriptors(obj)  获取对象属性的描述对象
+    # 迭代器
+        for of 循环原理
 
-        Object.fromEntries()  将二维数组转换成对象
-        Object.entries()      将对象转换成二维数组
-
-    # 动态import
-        是一个pormise对象，需要时再引入
-        function(){
-            import('/xxx').then(() => {})
+    # 生成器函数
+        function* gen(){
+            yield xxx;  //函数分割线
         }
-
-    # globalThis绝对全局对象
+        gen.next();
 
 ## 模块化
     # CommmonJS
@@ -445,6 +359,7 @@
         打包
             npm i browserify
             browserify url -o url
+
     # AMD
         暴露模块
             define(function(){
@@ -478,23 +393,11 @@
                 import * as API from 'url';
 
 ## Promise
-    const p = new Promise((resolve, reject) => {
-            if(xxx){
-                resolve();
-            }else{
-                reject();
-            }
-        })
-        p.then((value) => {
-            //成功回调
-        },(reason) => {
-            //失败回调
-        })
+    const p = new Promise((resolve, reject) => {xxx? resolve() : reject();})
+        p.then((value) => {},(reason) => {})
 
         // 只能做失败回调
-        // p.catch(() => {
-
-        // })
+        p.catch(() => {})
 
         异常穿透
             promise链式最后调用.catch()
@@ -569,7 +472,6 @@
         never  //函数没有值
         tuple  //[类型, 类型],固定长度数组
         enum  //枚举  enum 属性{属性名, 属性名}
-
         类型别名  type 属性名 = 类型;
 
     编译 tsc -w

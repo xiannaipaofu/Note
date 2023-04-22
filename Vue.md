@@ -7,7 +7,6 @@
 > 使用vue.config.js可以对脚手架进行个性化定制。
 
 ## Vue-API
-
     eslint语法校验功能关闭
         ---配置vue.config.js
             module.exports = defineConfig({
@@ -32,7 +31,7 @@
             
             beforeDestroy() {},  //销毁之前                                  
             destroyed() {},  //销毁之后
-        
+
         *计算属性
             computed:{
               简写（只读不取）
@@ -45,7 +44,7 @@
                 }
             }
 
-        *监视属性 or vm.$watch('isHot',function(newValue,oldValue){})
+        *监视属性
             watch:{
               简写(不需要配置的时候)
               isHot(){}
@@ -54,32 +53,15 @@
               isHot:{
                 deep:true,  //深度监视
                 immediate:false,  //初始化时先调用一下
-                handler(newValue, oldValue){
-
-                }
+                handler(newValue, oldValue){}
               }
             }
 
     ## 基本语法  
-        指令语法 
-            v-bind:xxx 简写为 :xxx  //单向
-            v-model:value 可以简写为 v-model,因为v-model默认收集的就是value的值  //双向
-            v-on 简写为@ //绑定事件监听
-                @click="demo" 和 @click="demo($event)" 效果一致，但后置可以传参 //绑定事件
-
-                修饰符： 
-                    @click.prevent="" 取消默认行为
-                    @click.noce="" 只触发一次
+        v-on修饰符： 
+            @click.prevent="" 取消默认行为
+            @click.noce="" 只触发一次
                     
-                    
-
-        条件渲染
-            v-if="表达式"、v-else-if、v-else  //不展示的DOM元素直接被移除，可以一起使用，但要求结构不能被"打断"
-            v-show="表达式"  //不展示的DOM元素未被移除，仅仅是使用样式隐藏掉
-
-        列表渲染
-            v-for="p in persons" :key="p.id"  //展示列表数据，可遍历：数组、对象、字符串、指定次数
-
         基本语令
             v-text指令：
                 1.作用：向其所在的节点中渲染文本内容。
@@ -869,26 +851,27 @@
             productionSourceMap: false,
 
 ## 购买服务器
-    设置安全组、打开一些端口号
-    利用xhell工具登录服务器
+    服务器打开端口号
 
-    nginx反向代理
-        配置： 
+    利用Xshell工具登录服务器
+    远程桌面连接
+        登录服务器
+
+    下载nginx配置： 
             cd /
             cd etc   *a安装nginx: yum install nginx
             cd nginx
             vim nginx.conf  //编辑
-                1.一访问服务器地址就可以访问到项目
                 location / {
                     root    /root/lsj/www/HelloKitty;
                     index   index.html;
-                    try_files $uri $uri/ /index.html;
                 }
-                2.获取数据
+                反向代理
                 location /api {
                     proxy_pass url;
                 }
                 
             3.nginx服务器跑起来
-            service nginx start
+            liux: service nginx start
+            windows: start ngnix
 

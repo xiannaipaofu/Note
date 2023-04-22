@@ -1,11 +1,4 @@
 ## HTML
-    <!-- ol有序、ul无序、dl定义列表 -->
-        <dl>
-            <dt>xxx</dt>  //项目
-            <dd>xxx</dd>  //描述项目
-            <dd>xxx</dd>
-        </dl>
-
     <!-- table表格 -->
         <table>  //一个表格
             <tr>  //一行
@@ -16,11 +9,10 @@
     <!-- form表单 -->
         <form action="">
             <label>账号：</label>  //标题
-            <input type="text" disabled(不可修改)>           //text文本、password密码、
-                                                            //submit提交按钮、radio单选、checkbox复选
-                                                            //date日期、datetime-local日期和时间、
-                                                            //number数字、range滑动条、time时间
-                                                            //属性 autofocus自动获取焦点
+            <input type="text" disabled(不可修改)>           
+            //text文本、password密码、//radio单选、checkbox复选//date日期、datetime-local日期和时间、
+            //number数字、range滑动条、time时间 //属性 autofocus自动获取焦点
+            
             <textarea></textarea>  //文本框
 
             <select>  //下拉框
@@ -46,19 +38,6 @@
     </video>
 
 ## Less
-    npm i less less-loader@5
-    weback.config.js
-        module: {
-            rules: [
-                {
-                    test: /\.less$/,
-                    loader: 'style-loader!css-loader!less-loader'
-                }
-            ]
-        }
-    main.js
-        import '../node_modules/less'
-
     # 注释
         以//开头的注释，不会编译到css文件中
         以/**/开头的注释会编译到css文件中
@@ -92,12 +71,7 @@
         }
 
 ## CSS2
-    权重
-
-
-    !important
     width: calc(100% - 150px);  //平分宽度
-    line-height  //导致盒子变高
     <a href="#"></a>  //可做锚点使用
     overflow: hidden;  //溢出隐藏、scroll滚动条、auto自适应滚动条
     opacity: 0.5;  //透明度
@@ -109,8 +83,6 @@
 
     <!-- 列表 -->
     list-style-type: none;  //清除列表默认样式
-    list-style-image: url()
-    list-style-position: 
     li::marker{content: '😅';}  //更改li前面的圆点
 
     <!-- 定位 -->
@@ -125,27 +97,16 @@
     resize: none;  //禁止文本框重置大小
 
     <!-- 背景 -->
-    background: url() center no-repeat;  //以图换字,居中、图片不重复 
-    background-color: red; //背景颜色
-    background-image: url();  //背景图片
-    background-repeat: no-repeat;  //平铺方式、repeat-x、repeat-y
+    background: url() center no-repeat;  //以图换字,居中，图片不重复、repeat-x、repeat-y
     background: transparent;  //背景透明
-    background-position:        //定位
-    background-attachment:
     background-size:cover;  //背景图片尺寸  100% 100% 铺满比例
-    background-origin: border-box、padding-box、content-box;  指定背景图片位置，边框区、padding区、内容区
-    background-clip: border-box、padding-box、content-box;  从指定位置开始绘制背景图片
 
     <!-- 文本 -->
     text-indent: -100px;  //首行缩进
-    text-align: center;  //文本对齐方式
     text-decoration:none;  //删除a标签下划线、underline增加下划线
     text-transform:uppercase;  //英文大写、lowercase;英文小写、capitalize;首字母大写
-    line-height: 35px;  //字体行高（实际开发中常用line-height=height来垂直居中文字）
-    font-size: 12px;  //字体大小
     font-style: italic/oblique     //斜体
     font-weight: 200;  //字体粗细
-    color: red;  //字体颜色
 
     <!-- 空白字符/作用于空格和回车 -->
     white-space: normal;  //连续的空白符会被合并，换行符会被当作空白，宽度不够时会折行。
@@ -171,12 +132,8 @@
     https://www.runoob.com/css/css-pseudo-classes.html
 
 ## Css3
-    box-sizing: border-box;  //定义一个怪异盒模型
-    
     <!-- 边框 -->
         border-radius：0 0 0 0;  //圆角
-        
-        border-image:url(border.png) 30 30 round;  //边界图片
 
     <!-- 渐变 -->
         线性渐变linear-gradient
@@ -325,7 +282,6 @@
             }
         }
         all	用于所有多媒体类型设备
-        print	用于打印机
         screen	用于电脑屏幕，平板，智能手机等。
         speech	用于屏幕阅读器
 

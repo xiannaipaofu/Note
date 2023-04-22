@@ -1,4 +1,6 @@
 ## Node.js
+    <!-- npm install -g cnpm --registry=https://registry.npmmirror.com 淘宝镜像-->
+
     npm list -g  查询全局包
     npm list name  查询某个模块版本号
     npm uninstall name  卸载包
