@@ -1,11 +1,3 @@
-## 关于不同版本的Vue：
-    因为vue.runtime.xxx.js没有模板解析器，所以不能使用template配置项，需要使用
-    render函数接受到的createElement函数去指定具体内容。
-
-## vue.config.js配置文件
-> 使用vue inspect > output.js可以查看到Vue脚手架的默认配置。
-> 使用vue.config.js可以对脚手架进行个性化定制。
-
 ## Vue-API
     eslint语法校验功能关闭
         ---配置vue.config.js
@@ -23,15 +15,15 @@
             beforeCreate() {},  //数据代理初始化前                                   
             created() {},  //初始化后(虚拟DOM未开始)
             
-            beforeMount() {},  //挂载之前（虚拟DOM完成）                      
-            mounted() {},  //挂载完毕
+            beforeMount() {},  //真实DOM挂载之前（虚拟DOM完成）                      
+            mounted() {},  //挂载完毕(虚拟DOM替换成真实DOM)
             
             beforeUpdate() {},  //更新数据：更新之前（页面尚未和数据保持同步）  
             updated() {},  //更新数据：更新之后（页面尚和数据保持同步）
             
-            beforeDestroy() {},  //销毁之前                                  
+            beforeDestroy() {},  //实例销毁之前                                  
             destroyed() {},  //销毁之后
-
+        
         *计算属性
             computed:{
               简写（只读不取）
@@ -44,7 +36,7 @@
                 }
             }
 
-        *监视属性
+        *监视属性 or vm.$watch('isHot',function(newValue,oldValue){})
             watch:{
               简写(不需要配置的时候)
               isHot(){}
@@ -53,14 +45,20 @@
               isHot:{
                 deep:true,  //深度监视
                 immediate:false,  //初始化时先调用一下
-                handler(newValue, oldValue){}
+                handler(newValue, oldValue){
+
+                }
               }
             }
 
-    ## 基本语法  
-        v-on修饰符： 
+    ## 基本语法
+        v-on 修饰符： 
             @click.prevent="" 取消默认行为
             @click.noce="" 只触发一次
+            .stop: 阻止事件冒泡；
+            .capture：使用事件的捕获模式；
+            .self：只有event.target是当前操作的元素时才触发事件；
+            .passive：事件的默认行为立即执行，无需等待事件回调执行完毕；
                     
         基本语令
             v-text指令：
@@ -108,19 +106,23 @@
                     }
                 })
 
-    三、基本原理
+    基本原理
 
         Key的原理
-            key是虚拟DOM对象的标识，当状态中的数据发生变化时，Vue会根据[新数据]生成[新的虚拟DOM]，随后Vue进行[新虚拟DOM]与[旧虚拟DOM]的差异比较。
+            key是虚拟DOM对象的标识，状态中的数据发生变化时，Vue会根据[新数据]生成[新的虚拟DOM]，[新虚拟DOM]与[旧虚拟DOM]进行差异比较。
+
+            index作为key，当进行破坏数组顺序的操作时，会产生没有必要的真实DOM更新，效率低。
+            如果结构中还包含输入类的DOM：
+                        会产生错误DOM更新 ==> 界面有问题
 
         数据代理原理
-            Object.definePropety(obj, ){
-                get(){
-
-                },
-                set(){
-
-                }
+            Object.definePropety(obj, 属性名){
+                // value:20,
+                // enumerable:true,//控制属性是否可以枚举，默认值为false
+                // writable:true,//控制属性是否可以修改，默认值为false
+                // configurable:true,//控制属性是否可以被删除，默认值为false
+                get(){},
+                set(){}
             }
             Vue监视数据的原理：
                 1. vue会监视data中所有层次的数据。
@@ -165,10 +167,31 @@
                 number：输入字符串转为有效的数字
                 trim：输入首尾空格过滤
 
-## Vue-cli-API
-    ## ref属性，id的替代者
-          获取：this.$refs.xxx
+## 键盘事件
+    <!-- 
+        1.Vue中常用的按键别名：
+            回车 => enter
+            删除 => delete
+            退出 => esc (捕获'删除'和'退格'键)
+            空格 => space
+            换行 => tab (特殊，需配合keydown使用)
+            上 => up
+            下 => dows
+            左 => lefy
+            右 => right
 
+        2.Vue未提供别名按键，可以使用按键原始的key值去绑定，但注意要转为kebab-case（短横线命名）
+
+        3.系统修饰键（用法特殊）：ctrl、alt、shift、meta（win键）
+            （1）.配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发。
+            （2）.配合keydown：正常触发事件。
+
+        4.也可以使用keyCode去指定具体的按键（不推荐）
+
+        5.Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名。
+    -->
+
+## Vue-cli-API
     ## props
         场景：父子组件通信
           （1）.传递数据：
@@ -190,11 +213,6 @@
                       default:'xx',//默认值
                     }
                   ]
-
-        备注：props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，
-              若业务需求确实需要修改，name请复制props的内容到data中一份，然后去修改data中
-              的数据。
-
     
     ## 自定义事件$on、$emit
             子组件给父组件传递数据
@@ -202,11 +220,6 @@
             绑定：
                 1.第一种方式，在父组件中：
                     <demo @atguigu="回调"/>
-                    methods: {
-                        test(name){
-                            console.log(name)
-                        }
-                    }
                 2.第二种方式，在父组件中：
                     this.$refs.demo.$on('atguigu', 回调)
                     
@@ -282,32 +295,18 @@
 
             3.作用域插槽
                 父组件：
-                    <子组件>
+                    <Category>
                         <template slot-scope="{game}">
                             <ul>
                                 <li v-for="(g,index) in games" :key="index"></li>
                             </ul>
                         </template>
-                    </子组件>
+                    </Category>
 
                 子组件：
                     <template>
                         <slot :game="games"></slot>  //回传数据
                     </template>
-
-    ## mixin(混合)
-        功能：可以把多个组件共用的JS逻辑配置提取成一个混入对象
-        使用方式：
-            第一步定义混合，例如：
-                export default{
-                  data(){....},
-                  methods:{....},
-                  ....
-                }
-            引入：
-                (1).全局混入：Vue.mixin(xxx)
-                import xxx from url;
-                (2).局部混入：mixins:['xxx']
 
     ## nextTick（钩子）
         1.语法：this.$nextTick(回调函数)
@@ -341,20 +340,6 @@
                 </transition>
 
             3.备注：若有多个元素需要过渡，则需要使用：<transition-group>,且每个元素都要指定key值。
-
-    ## 插件
-        功能：用于增强Vue
-        本质：包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数
-        据。
-        定义插件：
-          对象.install = function(Vue,options){
-            //插件配置
-
-            //插件配置
-
-            //插件配置
-          }
-        使用插件：Vue.use()
 
     ## Vue脚手架配置代理
         方法一
@@ -390,9 +375,6 @@
                 1.优点：可以配置多个代理，且可以灵活的控制请求是否走代理。
 
                 2.缺点：配置略微繁琐，请求资源时必须加前缀。
-                
-    ## Vue-resource
-        与axios类似，用来发送ajax请求
 
 ## Vue-Vuex
         npm i vuex@3
@@ -427,9 +409,7 @@
 
         修改vuex中的数据：$store.dispatch('函数',数据)或$store.commit('函数',数据)
 
-        备注：若没有网络请求或其他业务逻辑，组件也可以越过actions,即不写dispatch,直接编写commit
-
-            function(context){}:小仓库
+        function(context){}:小仓库
 
         6.四个map方法的使用
             import {mapState,mapGetters,mapActions,mapMutations} from 'vuex'
@@ -528,7 +508,7 @@
                         name:'hello',  //命名路由
                         path:'/about',
                         component:About,
-                        // 路由元信息
+                        // 路由元信息 v-show="$route.meta.show"
                         meta: {show: true},
                         <!-- 多级路由 -->
                         children:[
@@ -716,21 +696,6 @@
                     console.log('hellokitty')
                 }
 
-        ## 路由器的两种工作模式
-            1.hash模式：
-                1.带#号，不美观
-
-                2.若以后将地址通过第三方手机app分享，若app校验严格，则地址会被标记为不合法。
-
-                3.兼容性好。
-
-            2.history模式：
-                1.地址干净，美观
-
-                2.兼容性略差
-
-                3.应用部署上线时需要后端人员支持，解决刷新页面服务端404的问题。
-
 ## Vue组件间通信方式
             props 
                 场景：父子组件通信
@@ -794,7 +759,6 @@
                 获取当前组件的父组件
 
 ## 插件
-
     ElementUL
     nprogress 进度条
     swiper 轮播图
@@ -830,16 +794,10 @@
 ## 后台项目：
         123-200 后台管理系统
 
-## demo
-    运行脚本文件
-        以管理员权限打开windows powershell，输入set-ExecutionPolicy RemoteSigned，选择y或者a即可。
-
-    <!-- npm install -g cnpm --registry=https://registry.npmmirror.com 淘宝镜像-->
+## 开发流程
     <!-- npm install -g @vue/cli 全局安装Vue脚手架-->
     <!-- vue create name 脚手架vue-cli初始化项目 -->
     <!-- npm run serve 运行-->
-
-## 开发流程
     重写push与replace方法
 
     axios二次封装

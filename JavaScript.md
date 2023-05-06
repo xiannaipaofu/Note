@@ -22,34 +22,33 @@
             RegExp   正则
             Date     日期
     # 数组
-        .entries();  返回数组可迭代对象
-        .from()  通过给定对象中创建一个数组
-        .flat(2)  将多维数组转换成低维数组，参数为深度
+        .unshift()  向数组开头添加元素，并返回新的数组长度
+        .shift()  删除数组的第一个元素,并返回被删除的元素
+        .push()  向数组末尾添加一个元素，并返回新的数组长度
+        .pop()  删除最后一个元素,并返回被删除的元素
+        .reverse()  反转数组顺序
+        .sort((item) => {})  数组排序
+        .slice(start, end)  选取数组的一部分，并返回新数组
+        .splice(1, 1, '')  添加或删除元素,并返回被删除的元素
 
-        .filter((item) => { arr2.has(item)})  //过滤器   .has//筛选所匹配的值
-        .find((item) => {})  //返回第一个所匹配的值
-        .findIndex(item => )  //返回所匹配元素的下标
-        .every((item) => {})  遍历每一个数组是否符合条件，全符合为true,否则false
-        .forEach((item) => {})  //遍历数组里的每个元素并执行一遍回调  //修改原数组
-        .map((item) => {})  通过指定函数处理每个元素，并返回处理后的数组  //不修改原数组，返回新数组
-        
-        .includes()  判断数组是否包含某个值
-        .indexOf()  返回指定的字符串值首次出现的位置。如果没有找到匹配的字符串则返回 -1。
-        .isArray()   判断是否为数组
-        .some()  检测数组元素中是否含有符合指定条件，返回布尔值
-
-        .concat();  连接两个数组
+        .concat(arr2);  连接两个数组
         .fill('', 0, 2)  填充数组
         .join()  把数组每个元素放入一个字符串
 
-        .unshift()  向数组开头添加元素
-        .shift()  删除数组的第一个元素并返回新数组
-        .push()  向数组末尾添加一个元素，并返回新的数组
-        .pop()  删除最后一个元素并返回数组
-        .reverse()  反转数组顺序
-        .sort()  数组排序
-        .slice()  选取数组的一部分，并返回新数组
-        .splice(1, 1, '')  添加或删除元素
+        .forEach((item) => {})  //遍历数组里的每个元素并执行一遍回调  //修改原数组
+        .map((item) => {})  通过指定函数处理每个元素，并返回处理后的数组  //不修改原数组，返回新数组
+        .every((item) => {})  遍历每一个数组是否符合条件，全符合为true,否则false
+        .filter((item) => { arr2.has(item)})  //过滤器   .has//筛选所匹配的值
+        .some((item) => {})  检测数组元素中是否含有符合指定条件，只要有一项满足条件，就会返回true
+
+        .find((item) => {})  //返回第一个所匹配的值
+        .findIndex(item => )  //返回所匹配元素的下标
+        
+        .isArray()   判断是否为数组
+        
+        .entries();  返回数组可迭代对象
+        .from()  通过给定对象中创建一个数组(数组为对象中属性值集合)
+        .flat(2)  将多维数组转换成低维数组，参数为深度
 
         Number()           将字符串转换为数字
         Number.EPSILON     js表示的最小精度
@@ -72,18 +71,21 @@
     
     # 字符串
         属性
-            constructor  返回创建字符串属性的函数
-            prototype  向对象添加属性方法
+            constructor  返回创建字符串属性的构造函数
+            .prototype  向对象添加属性方法
 
         方法
-            trim()  去除首尾空白
-            toString()  返回字符串对象值
+            .trim()  去除首尾空白
+            .toString()  返回字符串对象值
 
-            charAt()  返回指定索引位置的字符
-            concat()  连接字符串并返回
-            lastlndexOf()  返回指定字符最后一次出现的索引值
-            toLowerCase()   转小写
-            toUpperCase()   转大写
+            .indexOf()  返回指定的字符串值首次出现的位置。如果没有找到匹配的字符串则返回 -1。
+            .charAt(index)  返回指定索引位置的字符
+            .concat(string)  连接字符串并返回
+            .includes('')  判断字符串是否包含某个值
+            .lastlndexOf('')  返回指定字符最后一次出现的索引值
+
+            .toLowerCase()   转小写
+            .toUpperCase()   转大写
 
             valueOf()       返回某个字符串对象的原始值
             
@@ -99,7 +101,7 @@
         Object.setPrototypeOf(obj1, obj2)  给对象添加原型对象
         Object.getPrototypeOf(obj1)   读取对象
         
-        Object.entries()  返回对象可遍历属性[key, value]的数组
+        Object.entries(obj)  返回对象可遍历属性[key, value]的数组
         Object.getOwnPropertyDescriptors(obj)  获取对象属性的描述对象
 
         Object.fromEntries()  将二维数组转换成对象
@@ -116,7 +118,7 @@
         # this指向
             myFun.call(obj, 'xx', 'xx')
             myFun.apply(obj, ['xx', 'xx'])
-            myFun.bind(obj, 'xx', 'xx')()  //返回函数
+            myFun.bind(obj, 'xx', 'xx')()  //有返回值且是个函数
 
     # 全局
         eval()  计算字符串，并作为脚本代码执行
@@ -124,6 +126,8 @@
         parseFloat()  解析字符串并返回浮点数
 
     #判断
+        值类型可以用typeof，引用类型用instanceof。
+
         不同的结果执行不同的代码
             switch(){
                 case 1: xxx;
@@ -346,7 +350,7 @@
         gen.next();
 
 ## 模块化
-    # CommmonJS
+    # CommonJS
         暴露模块
             module.exports = {value}
             exports.xxx = value
@@ -425,7 +429,7 @@
             传入promise数组
             返回一个新的promise，最先完成promise状态改变的结果
 
-##  jQuery
+## jQuery
 
     npm i jquery
 
