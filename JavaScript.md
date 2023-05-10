@@ -430,31 +430,166 @@
             返回一个新的promise，最先完成promise状态改变的结果
 
 ## jQuery
-
+    JS函数库，封装简化DOM操作
+    https://www.runoob.com/jquery/jquery-tutorial.html
     npm i jquery
 
-    $('form').on('submit', function(e){})  //获取元素，绑定事件
-    
-    $('.off').addClass('active')  //添加类名
-    $('.on').removeClass('active')  //删除类名
+    $('选择器').操作()
+        选择器
+            p
+            #id
+            .class
 
-    $('.on').find('span').text(res.nickname)  //修改元素文本
+    事件
+        $('p'),click(function(){})
 
-    $(this).siblings();  //返回被选元素的所有同级元素。
+    显示隐藏
+        $('').hide(1000, callback);
+        $('').show(1000, callback);
+        $('').toggle(1000, callback);  //切换显示与隐藏
 
-    $(this).attr('type');  //设置或返回被选元素的属性值
+    淡入淡出
+        $('').fadeIn(1000, callback);  //淡入
+        $('').fadeOut(1000, callback);  //淡出
+        $('').fadeToggle(1000, callback);  //切换淡入淡出
+        $('').fadeTo(1000, opacity, callback);  //渐变至透明度(slow、fast、10000, 0.5, callback)
+
+    滑动
+        $('').slideDown(1000, callback);  //向下滑动
+        $('').slideUp(1000, callback);  //向上滑动
+        $('').slideToggle(1000, callback);  //切换
+
+    动画
+        $('').animate({}, 1000, callback);  {变换的css属性}
+        $('').stop();  //停止动画
+
+    jquery链式调用
+        $('p').slideDown().slideUp
+
+    捕获元素
+        $('').html(callback(a, b));  //设置或返回元素的内容及标签 a:当前元素下标，b:旧的元素文本内容
+        $('').text(callback(a, b));  //设置或返回元素的文本内容
+        $('').val(callback(a, b));  //设置或返回元素的表单值
+
+    修改属性值
+        $('').attr('属性名', newValue/callback(a, b));
+
+    添加元素
+        $('').append('text');  //在元素结尾追加内容
+        $('').prepend('text');  //在元素开头追加内容
+        $('').after()  //在元素之后插入内容
+        $('').before()  //在元素之前插入内容
+
+    删除元素
+        $('').remove();  //删除被选元素
+        $('').empty();  //删除被选元素的子元素
+
+    操作CSS
+        $('.off').addClass('active')  //添加类名
+        $('.on').removeClass('active')  //删除类名
+        $('.on').toggleClass('active')  //切换添加删除类名
+        $('').css()  //设置或返回css属性
+
+    尺寸
+        https://www.runoob.com/jquery/jquery-dimensions.html
+
+    遍历
+        $('').parent()  返回元素的父元素
+        $('').children()  返回元素的所有直接子元素
+        $('').find('span')  返回元素的所有后代子元素
+        $('').siblings()  返回元素的所有兄弟元素
+        $('').next()  返回元素的下一个兄弟元素
+        $('').nextAll()  元素的后的所有兄弟元素
+        $('').first()  选中元素的第一个元素
+        $('').last()  选中元素的最后一个元素
+        $('').eq(0)  选中元素的指定索引号元素
+        $('').fiter('xxx')  过滤不匹配的元素
+        $('').not  与fiter互逆
+
     $(this).prop('src', '../xxx');  //调用该对象的内置属性
-
     $(this).trim();  //用于去除字符串两端的空白字符
 
     const data = $('form').serialize()   // 采集用户信息
     const data = $('form').serializeArray();  //获取表单所有键值对
 
-    $('.filter').on('click', 'li', function(){});  //事件委托
-
     #ajax
         $.get( url [, data ] [, callback ] [, dataType ] )
         $.post(url [, data ] [, callback ] [, dataType ] )
+
+## Angular JS
+    JS结构化框架
+
+    Angular state inspector 扩展程序
+
+    引入
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    const app = angular.module('myApp', []);  //创建angularjs模块
+
+    指令
+        ng-app  //绑定容器($rootScope)
+
+        ng-controller="myCtrl"  //添加控制器,并在控制器中定义属性和方法
+            app.controller('myCtrl', ['$scope', function($scope){
+                $scope.carname = "";
+                $scope.seyHello = function(){
+                    console.log('hello-angularJS');
+                }
+            }])
+
+        ng-model=""  //双向绑定数据
+
+        ng-init="name='' "  //初始化当前作用域变量
+
+        ng-repeat="i in arr";  {{i}}  //循环遍历数组生成元素节点(类似v-for)
+            $index  //索引
+            {{$first}}  //开头为true，后面为false
+            {{$last}}  //结尾为true，其余为false
+            {{$middle}}  //中间为true,头尾为false
+            {{$odd}}  //奇数true，偶数false
+            {{$even}}  //偶数true，奇数false
+
+        ng-bind="xxx"  //解决使用{{}}显示数据闪屏问题
+
+        ng-show=""  //显示与隐藏
+        ng-hide=""
+
+        事件
+            ng-click
+            ng-mouseenter  //鼠标移入
+            ng-mouseleave  //鼠标移出
+
+        ng-class  //动态引用定义样式{.class: true}
+        ng-style  //动态引入通过js指定的样式对象{color: 'red'}
+
+    {{}}  //插值语法
+    {{username | uppercase}}  //过滤器currency格式化数字为货币格式。filter	从数组项中选择一个子集。lowercase	格式化字符串为小写。orderBy	根据某个表达式排列数组。uppercase	格式化字符串为大写。
+
+    自定义指令
+        const app = angular.module('myApp', []);
+        app.directive('myBind', function(){
+            return {
+                template: "<div>自定义指令myBind</div>";
+            }
+        })
+        <my-bind></my-bind>
+        <div my-bind></div>
+
+    发送请求
+        传入$http
+        $http({
+            method: 'get',
+            url: ''
+        }).then()
+        $http.get('url').then(()=>{})
+
+    定时器
+        $timeout
+        $timeout(()=>{}, 1000)
+        $interval  //循环定时器
+        $interval(()=>{}, 1000)
+
+    
 
 ## TypeScript
     npm i -g typescript

@@ -38,6 +38,11 @@
     </video>
 
 ## Less
+    @name: bule;
+    div{
+        color: @name;
+    }
+
     # 注释
         以//开头的注释，不会编译到css文件中
         以/**/开头的注释会编译到css文件中
@@ -52,7 +57,7 @@
         &
 
     # 混合
-        .class(@color){
+        div(@color){
             width: 100px;
             height: 100px;
             color: @color;
@@ -63,11 +68,108 @@
         }
 
     # 继承
-        .color{
+        div{
             color: red;
         }
-        #ID2：(.color){
-            .class(pink)
+        div2:extend(div){
+            width: 100px;
+        }
+
+## Sass
+    Live Sass Compiler扩展
+        配置
+        // 定制样式
+        "liveSassCompile.settings.formats":[
+            // This is Default.
+            {
+                "format": "expanded",  //可定制的出口css样式（expanded展开格式、compact紧凑格式、compressed压缩格式、nested嵌套格式）
+                "extensionName": ".css",
+                "savePath": null  //为null，表示当前目录
+            }
+        ],
+        // 排除目录
+        "liveSassCompile.settings.excludeList": [
+            "/**/node_modules/**",
+            "/.vscode/**"
+        ],
+        //是否添加兼容前缀 例如：-webkit- -moz- ...等
+        "liveSassCompile.settings.autoprefix": [
+            "> 1%",
+            "last 2 versions"
+        ]
+
+    语法扩展
+        font-size: 16px;
+        font-family: sans-serif;
+
+        font: {
+            size: 16px;
+            family: sans-serif;
+        }
+
+    定义变量
+        $color: red;
+
+        div {
+            color: $color;
+            $width: 50px !global;
+        }
+
+    导入
+        _pubilc.scss
+        @import 'url';
+
+    混合
+        @mixin name{
+
+        }
+        @mixin name($a, $b, $c:10px){
+            width: $a;
+            height: $b;
+            font-size: $c;
+        }
+
+        div{
+            @include name;
+        }
+        div{
+            @include name(10px, 20px);
+        }
+
+    继承
+        @extend %class
+
+    占位符
+        必须配合继承使用
+        %class
+
+    运算
+        and与、or或、not非
+        @if 条件 {
+
+        }
+        @else {
+
+        }
+        三元表达式
+            color: if(条件, true, false)
+
+    插值语法
+        #{$width}
+
+    函数
+        @function name(){
+            @return
+        }
+        name();
+
+    @for
+        to 包含start不包含end
+        through 包含start与end的值
+        @for $i from 1 to 4{
+            .p#{$1} {
+
+            }
         }
 
 ## CSS2
