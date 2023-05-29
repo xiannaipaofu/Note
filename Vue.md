@@ -738,7 +738,7 @@
 
             v-model
 
-            sync修饰符(与v-model相似)
+            .sync修饰符(与v-model相似)
                 props:
                     :money.sync="money"
                     传递porps: money
@@ -765,6 +765,7 @@
     qrcode 二维码
     vue-lazyload 图片懒加载(vue2使用 1.3.4版本)
     vee-validate 表单验证
+    moment.js  生成日期对象
     mock.js
         cnpm i mockjs
         创建mock文件夹
@@ -777,6 +778,10 @@
         import _ from 'lodash'
         <!-- 按需引入 -->
         import throttle from 'lodash/throttle'
+
+        // 引用lodash的深拷贝
+        import cloneDeep from 'lodash/cloneDeep'
+        cloneDeep(row)
 
         节流： 在规定的间隔时间范围内不会重复触发回调，只有大于这个时间间隔才会触发。(设置cd)
             _.throttle(function(){
@@ -792,7 +797,74 @@
         三级联动 轮播图 分页器 放大镜 面包屑 登录 注册 日历
 
 ## 后台项目：
-        123-200 后台管理系统
+
+    https://github.com/PanJiaChen/vue-admin-template  简洁版模板
+
+    https://github.com/PanJiaChen/vue-admin-template.git  git克隆链接
+
+    "dev": "set NODE_OPTIONS=--openssl-legacy-provider & vue-cli-service serve",
+    修改package.json，在相关构建命令之前加入set NODE_OPTIONS=–openssl-legacy-provider  npm run dev报错
+
+    http://39.98.123.211:8170/swagger-ui.html
+    http://39.98.123.211:8510/swagger-ui.html
+
+    proxy: {
+        '/dev-api': {
+            target: 'http://39.98.123.211',
+            pathRewrite: {'^/dev-api' : ''}
+        }
+    }
+
+    npm run lint --fix  //格式化代码规范
+
+
+    ElementUL
+        button  //type类型、icon图标、disabled是否禁用
+        input  //type: text/textarea、placeholder输入框占位文本
+
+        table  //data绑定的数据、border纵向边框、
+        table-column  //type:selection多选框/index索引/expand展开的按钮、lable显示的标题、prop对应列的内容(与data绑定)、width对应列宽度、align对齐方式
+        <template slot-scope="{row, column, $index}"></template>  //table-column作用域插槽
+
+        form  //model表单数据对象、表单验证rules、.validate检验校验是否通过、inline行内表单
+        form-item  //prop收集数据绑定对象、label标签文本、required是否必填
+
+        upload  //action上传地址、show-file-list是否显示已上传文件列表:on-success=""上传成功回调、:before-upload=""上传之前回调
+        
+        dialog  //对话框  title标题、visible是否显示
+        
+        $message  //({type: success/warning/info/error, message: '提示信息'})
+        messageBox
+            $msgbox(options)  //自定义
+            $alert(message, title, options)  //消息提示
+            $confirm(message, title, options)  //确认消息
+            $prompt(message, title, options)  //提交内容
+                message消息内容、title标题、options{
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }
+                .then()  //点击确定回调
+                .catch()  //点击取消回调
+
+        pagination  //分页器
+            :current-page="page"当前页数
+            page-size每页显示数据条数
+            total数据总条数
+            page-count分页器总页数
+            pager-count页码按钮数量
+            layout="prev, pager, next, jumper, sizes, total"  //组件布局
+            :page-sizes="[3, 5, 10]"  //每页显示数量设置
+            @current-change=""当前页数发生改变的回调
+            @size-change=""  展示数据条数发生改变的回调
+
+        150-200 后台管理系统  19h
+
+        150-160  4h
+        160-170  4h
+        170-180  3.5h
+        180-190  2.5h
+        190-200  5h
 
 ## 开发流程
     <!-- npm install -g @vue/cli 全局安装Vue脚手架-->

@@ -1,184 +1,164 @@
 ## HTML
+    超文本标记语言: HyperText Markup Language
+
+    <map></map>  地图
+
+    <!-- button按钮 -->
+        type='button|submit|reset'
+
+     <!-- input输入框 -->
+            <input type="text">  
+                type='text|password|number|'
+                    radio|checkbox  checked 默认选中
+                    color颜色
+                    range滑动条
+                    file上传文件  accept='audio|video|image' 规定文件类型 multiple 允许上传多个文件
+                    image显示图片 alt='' 图像提交文本 width='' 宽度 height
+                    date年月日
+                    datetime-local年月日-当地时间
+                    time时间
+                    month年月
+                    week年周
+                name=''  元素名称
+                value=''  指定默认值
+                placeholder=''  占位符
+                autofocus  页面加载时自动获取焦点
+                disabled  禁止
+                autocomplete='on|off'  开启自动填充内容
+                from=''  规定所属哪个表单
+                max=''  最大值
+                min=''  最小值
+                maxlength=''  最长字符
+                pattern=''  规定正则
+                readonly  设置为只读
+                required  设置必填
+                size=''  可见宽度
+                step=''  设置数字间隔
+
     <!-- table表格 -->
-        <table>  //一个表格
+        <table border='1'>  //一个表格
+            <tr>
+                <th></th>  表头(有居中效果)  属性: colspan='2'  横跨列数  rowspan='2' 纵跨行数
+            </tr>
             <tr>  //一行
-                <td></td>  //一列
+                <td></td>  //一列  属性: colspan='2'  横跨列数  rowspan='2' 纵跨行数
             </tr>
         </table>
 
-    <!-- form表单 -->
-        <form action="">
-            <label>账号：</label>  //标题
-            <input type="text" disabled(不可修改)>           
-            //text文本、password密码、//radio单选、checkbox复选//date日期、datetime-local日期和时间、
-            //number数字、range滑动条、time时间 //属性 autofocus自动获取焦点
-            
-            <textarea></textarea>  //文本框
+    <!-- ol/ul/dl列表 -->
+        <ol>  属性: type='1|a|A|i|I|' start='1' reversed逆序
+            <li></li>
+        </ol>
 
-            <select>  //下拉框
-                <optgroup>  //下拉分组                                
-                    <option value="男">男</option>
-                    <option value="女">女</option>
-                </optgroup>
-                <datalist></datalist>  //预选列表
-            </select>
+        <ul>
+            <li></li>
+        </ul>
+
+        <dl>
+            <dt></dt>  表头
+            <dd></dd>  列表
+        </dl>
+
+    <!-- form表单 -->
+        <form>
+            action='url'  发送请求
+            method=''  请求类型
+            name=''
+            enctype='application/x-www-form-urlencoded|multipart/form-data|text/plain'  规定发送表单数据之前对其进行编码
+            novalidate  提交表单不进行验证
+            target='_self'  在何处打开action url
+
+            <label>账号：</label>  //标题
         </form>
 
+    <!-- textarea文本域 -->
+        <textarea></textarea>
+
+    <!-- select下拉框 -->
+        <select>
+            <optgroup label='性别'>下拉分组                                
+                <option value="男">男</option>
+                <option value="女">女</option>
+                    selected 默认选项
+            </optgroup>
+            
+        </select>
+
+    <!-- fieldset表格分组 -->
+        <fieldset>
+            <legend>Personalia:</legend>
+            Name: <input type="text">
+        </fieldset>
+
+    <!-- label标签 -->
+        for='name'	规定哪个表单元素绑定
+
     <!-- 字符 -->
+        https://www.runoob.com/html/html-entities.html
         &lt<;&gt>;
 
-    <!-- 音频 -->
-    <audio controls>
-        <source src="horse.mp3" type="audio/mpeg">
-    </audio>
+    ## HTML5
+        <!-- 预选列表 -->
+            <input type="text" list="ageList">
+            <datalist id="ageList">预选列表
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </datalist>
 
-    <!-- 视频 -->
-    <video width="320" height="240" controls>
-        <source src="movie.mp4" type="video/mp4">
-    </video>
+        <!-- 音频 -->
+            <audio>
+                src
+                autoplay 自动播放
+                controls 音频控件
+                loop 循环播放
+                muted 静音
+                preload='auto|metadata|none' 规定当网页加载时，音频是否默认被加载以及如何被加载。
 
-## Less
-    @name: bule;
-    div{
-        color: @name;
-    }
+                <source src="horse.mp3" type="audio/mpeg"> 多文件配置
+            </audio>
 
-    # 注释
-        以//开头的注释，不会编译到css文件中
-        以/**/开头的注释会编译到css文件中
+        <!-- 视频 -->
+            <video width="320" height="240">
+                poster="./public/347075.jpg"  主界面图
+                <source src="movie.mp4" type="video/mp4">
+            </video>
 
-    # 变量
-        声明变量
-            属性值：@xxx：xxx；
-            选择器：#@{xxxxx}
-            url：@{url}
+        <!-- canvas图形 -->
+            https://www.runoob.com/html/html5-canvas.html
 
-    # 嵌套
-        &
+        <!-- SVG可缩放矢量图形 -->
+            https://www.runoob.com/html/html5-svg.html
 
-    # 混合
-        div(@color){
-            width: 100px;
-            height: 100px;
-            color: @color;
-        }
+        <!-- 拖放 -->
+            https://www.runoob.com/html/html5-draganddrop.html
 
-        #ID{
-            .class(red)
-        }
+        <!-- 地理位置 -->
+            https://www.runoob.com/html/html5-geolocation.html
 
-    # 继承
-        div{
-            color: red;
-        }
-        div2:extend(div){
-            width: 100px;
-        }
-
-## Sass
-    Live Sass Compiler扩展
-        配置
-        // 定制样式
-        "liveSassCompile.settings.formats":[
-            // This is Default.
-            {
-                "format": "expanded",  //可定制的出口css样式（expanded展开格式、compact紧凑格式、compressed压缩格式、nested嵌套格式）
-                "extensionName": ".css",
-                "savePath": null  //为null，表示当前目录
-            }
-        ],
-        // 排除目录
-        "liveSassCompile.settings.excludeList": [
-            "/**/node_modules/**",
-            "/.vscode/**"
-        ],
-        //是否添加兼容前缀 例如：-webkit- -moz- ...等
-        "liveSassCompile.settings.autoprefix": [
-            "> 1%",
-            "last 2 versions"
-        ]
-
-    语法扩展
-        font-size: 16px;
-        font-family: sans-serif;
-
-        font: {
-            size: 16px;
-            family: sans-serif;
-        }
-
-    定义变量
-        $color: red;
-
-        div {
-            color: $color;
-            $width: 50px !global;
-        }
-
-    导入
-        _pubilc.scss
-        @import 'url';
-
-    混合
-        @mixin name{
-
-        }
-        @mixin name($a, $b, $c:10px){
-            width: $a;
-            height: $b;
-            font-size: $c;
-        }
-
-        div{
-            @include name;
-        }
-        div{
-            @include name(10px, 20px);
-        }
-
-    继承
-        @extend %class
-
-    占位符
-        必须配合继承使用
-        %class
-
-    运算
-        and与、or或、not非
-        @if 条件 {
-
-        }
-        @else {
-
-        }
-        三元表达式
-            color: if(条件, true, false)
-
-    插值语法
-        #{$width}
-
-    函数
-        @function name(){
-            @return
-        }
-        name();
-
-    @for
-        to 包含start不包含end
-        through 包含start与end的值
-        @for $i from 1 to 4{
-            .p#{$1} {
-
-            }
-        }
 
 ## CSS2
+    拾色器
+        https://www.runoob.com/tags/html-colorpicker.html
+        
     width: calc(100% - 150px);  //平分宽度
     <a href="#"></a>  //可做锚点使用
     overflow: hidden;  //溢出隐藏、scroll滚动条、auto自适应滚动条
     opacity: 0.5;  //透明度
     z-index: 1; //调整显示层级
     cursor: pointer;  //鼠标形状
+    vertical-align: 9px;  调整基线
+        label{
+            width: 100px;
+            height: 30px;
+            display: inline-block;
+            text-align: justify;
+            overflow: hidden;
+            &::after{
+                width: 100%;
+                display: inline-block;
+                content: '';
+            }
+        }  两端对齐
     
     <!-- 表单 -->
     vertical-align: middle；  // 将图片或表单元素（行内块）和文字垂直居中
@@ -402,3 +382,138 @@
 
         简写
             grid-area: 1 / 2 / 5 / 6;  从第 1 行开始和第 2 列开始， 第 5 行和第 6 列结束
+
+## Less
+    @name: bule;
+    div{
+        color: @name;
+    }
+
+    # 注释
+        以//开头的注释，不会编译到css文件中
+        以/**/开头的注释会编译到css文件中
+
+    # 变量
+        声明变量
+            属性值：@xxx：xxx；
+            选择器：#@{xxxxx}
+            url：@{url}
+
+    # 嵌套
+        &
+
+    # 混合
+        div(@color){
+            width: 100px;
+            height: 100px;
+            color: @color;
+        }
+
+        #ID{
+            .class(red)
+        }
+
+    # 继承
+        div{
+            color: red;
+        }
+        div2:extend(div){
+            width: 100px;
+        }
+
+## Sass
+    Live Sass Compiler扩展
+        配置
+        // 定制样式
+        "liveSassCompile.settings.formats":[
+            // This is Default.
+            {
+                "format": "expanded",  //可定制的出口css样式（expanded展开格式、compact紧凑格式、compressed压缩格式、nested嵌套格式）
+                "extensionName": ".css",
+                "savePath": null  //为null，表示当前目录
+            }
+        ],
+        // 排除目录
+        "liveSassCompile.settings.excludeList": [
+            "/**/node_modules/**",
+            "/.vscode/**"
+        ],
+        //是否添加兼容前缀 例如：-webkit- -moz- ...等
+        "liveSassCompile.settings.autoprefix": [
+            "> 1%",
+            "last 2 versions"
+        ]
+
+    语法扩展
+        font-size: 16px;
+        font-family: sans-serif;
+
+        font: {
+            size: 16px;
+            family: sans-serif;
+        }
+
+    定义变量
+        $color: red;
+
+        div {
+            color: $color;
+            $width: 50px !global;
+        }
+
+    导入
+        _pubilc.scss
+        @import 'url';
+
+    混合
+        @mixin name{
+
+        }
+        @mixin name($a, $b, $c:10px){
+            width: $a;
+            height: $b;
+            font-size: $c;
+        }
+
+        div{
+            @include name;
+        }
+        div{
+            @include name(10px, 20px);
+        }
+
+    继承
+        @extend %class
+
+    占位符
+        必须配合继承使用
+        %class
+
+    运算
+        and与、or或、not非
+        @if 条件 {
+
+        }
+        @else {
+
+        }
+        三元表达式
+            color: if(条件, true, false)
+
+    插值语法
+        #{$width}
+
+    函数
+        @function name(){
+            @return
+        }
+        name();
+
+    @for
+        to 包含start不包含end
+        through 包含start与end的值
+        @for $i from 1 to 4{
+            .p#{$1} {
+
+            }
+        }

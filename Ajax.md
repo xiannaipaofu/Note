@@ -1,3 +1,6 @@
+## XML
+    可扩展标记语言（EXtensible Markup Language）
+
 ## ajax
     信息响应(100–199)，成功响应(200–299)，重定向(300–399)，客户端错误(400–499)和服务器错误 (500–599)：
     200 - 请求成功，301 - 资源（网页等）被永久转移到其它URL，404 - 请求的资源（网页等）不存在，500 - 内部服务器错误
@@ -30,39 +33,21 @@
     # 发送AJAX
         xhr = new XMLHttpRequest();  // 创建对象
     
-        <!-- xhr.timeout = 2000;  // 网络超时设置、回调 -->
-        <!-- xhr.ontimeout = function(){
-            alert('网络超时啦...')
-        }; -->
-    
-        <!-- xhr.onerror = function(){  // 网络异常回调
-            alert('网络崩溃了')
-        }; -->
-    
-        <!-- xhr.responseType = 'json';  // 设置响应体数据的类型(自动转换) -->
-    
-        xhr.open('get', 'http://127.0.0.1:8000/server?a=100&b=200');  //设置请求方法和url
+        xhr.open('get', 'url');  //设置请求方法和url
     
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');  // 设置请求头
-        <!-- xhr.setRequestHeader('name','atguigu'); -->
     
         xhr.send();  // 发送,xhr.send('xxxx');  post方式传递参数
         
         xhr.onreadystatechange = function(){
             if(xhr.readyState === 4){
-                    // 判断响应状态码 200 404（找不到） 403（forbidden被禁止） 401（未授权） 500（内部错误）
-                    if(xhr.status >= 200 && xhr.status < 300){
-                        // 处理结果 行 头 空行 体
-                        console.log(xhr.status);//状态码
-                        console.log(xhr.statusText);//状态字符串
-                        console.log(xhr.getAllResponseHeaders());//所有的响应头
-                        console.log(xhr.response);//响应体
-                        var res = JSON.parse(xhr.responseText)//响应体文本格式
-                    }else{
+                if(xhr.status >= 200 && xhr.status <=300){
+                    console.log(xhr.response);//响应体
+                }else{
 
-                    }
                 }
             }
+        }
         <!-- // xhr.onload = function(){} //响应接收完毕 -->
 
     # 解决跨域
@@ -102,8 +87,8 @@
             cancelToken: new axios.CancelToken(function(c){
                 cancel = c;
             })
-        }).then(respose => {
-            console.log(respose)
+        }).then(res => {
+            console.log(res)
         })
 
     请求拦截器、响应拦截器

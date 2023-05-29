@@ -38,7 +38,7 @@
         .forEach((item) => {})  //遍历数组里的每个元素并执行一遍回调  //修改原数组
         .map((item) => {})  通过指定函数处理每个元素，并返回处理后的数组  //不修改原数组，返回新数组
         .every((item) => {})  遍历每一个数组是否符合条件，全符合为true,否则false
-        .filter((item) => { arr2.has(item)})  //过滤器   .has//筛选所匹配的值
+        .filter((item) => { arr2.has(item)})  //过滤器,返回所匹配的条件，生成新的数组   .has//筛选所匹配的值
         .some((item) => {})  检测数组元素中是否含有符合指定条件，只要有一项满足条件，就会返回true
 
         .find((item) => {})  //返回第一个所匹配的值
@@ -163,6 +163,9 @@
 ## 事件
     event.target  触发事件的元素
 
+    data-xx='xx' 自定义属性
+    .getAttribute('data-xx')
+
     # 鼠标事件
         click  鼠标单击
         dblclick  双击
@@ -195,6 +198,9 @@
         select     选取文本时
         submit     提交表单时
 
+    # HTML 音频/视频 DOM 参考手册
+        https://www.runoob.com/tags/ref-av-dom.html
+
     #事件传播
         event.stopPropagation();  //阻止事件传播
         event.preventDefault()  取消默认行为
@@ -226,33 +232,39 @@
 
         .parentNode();  某元素的父节点
         .childNodes();  某元素的子节点
-        .attributes();  元素的属性节点
+        .previousElementSibling  某元素的上一个兄弟节点
+        .nextElementSibling  某元素的下一个兄弟节点
+        .firstElementChild	返回元素的第一个子元素
         .lastChild	    返回最后一个子节点
+        .insertBefore();  指定子节点前面插入新的子节点
+        .textContent	设置或返回一个节点和它的文本内容
 
         .innerHTML();  //向标签放入文本或标签
 
-        .insertBefore();  指定子节点前面插入新的子节点
         .insertAdjacentHTML(position,text)  //beforbegin插入自身元素前面、afterbegin插入到元素第一个子节点之前、beforeend元素最后一个子节点之后、afterend元素自身的后面
 
         .appendChild();  //创建新的子节点到尾部
+        .createElement();  创建元素节点
         .removeChild();  删除子节点
         .replaceChild();  替换子节点
+
         .createAttribute();  创建属性节点
-        .createElement();  创建元素节点
+        .attributes();  读取元素的属性节点
         .createTextNode();  创建文本节点
 
         .setAttribute('name', 'value');  //给标签设置属性
         .getAttribute();  返回指定的属性值
         .className='value';  //给标签设置class属性
-        .children	返回元素的子元素的集合
 
-        element.firstElementChild	返回元素的第一个子元素
+
+        .children	返回元素的子元素的集合
+        .previousSibling	返回某个元素紧接之前元素
+        .nextSibling	返回指定元素之后的下一个兄弟元素
+
         element.focus()	获取焦点
         element.hasAttribute()	如果元素中存在指定的属性返回 true，否则返回false。
-        element.previousSibling	返回某个元素紧接之前元素
-        element.nextSibling	返回指定元素之后的下一个兄弟元素
+        
         element.tagName	作为一个字符串返回某个元素的标记名（大写）
-        element.textContent	设置或返回一个节点和它的文本内容
         element.title	设置或返回元素的title属性
 
     # 获取滚动条高度
@@ -268,7 +280,7 @@
         element.scrollTop	实际元素的顶部边缘和顶部边缘之间的距离
         element.scrollWidth	返回元素的整个宽度（包括带滚动条的隐蔽的地方）
 
-##  BOM
+## BOM
     # Window
         window.location.href = ''  //页面跳转
         window.location.reload()  //刷新页面
@@ -353,7 +365,7 @@
     # CommonJS
         暴露模块
             module.exports = {value}
-            exports.xxx = value
+            exports.name = value
         
         引入模块
             require(xxx)
