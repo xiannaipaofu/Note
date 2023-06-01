@@ -1,99 +1,127 @@
 ## javaScript
-    alert() 警告框
-    confirm();  确认框
-    prompt();  提示框
-
     "use strict";  严格模式
     debugger;  断点、调试代码
 
     # 数据类型
+    值类型可以用typeof，引用类型用instanceof。
         typeof xxx  检测类型
-        基本类型
-            u  undefined
-            s  string symbol
-            o  object
-            n  null number
-            b  boolean
+        instanceof  //判断一个属性是否存在一个对象身上
+            value instanceof Promise
 
-        引用类型
-            Object
-            Array
-            Function
-            RegExp   正则
-            Date     日期
-    # 数组
-        .unshift()  向数组开头添加元素，并返回新的数组长度
-        .shift()  删除数组的第一个元素,并返回被删除的元素
-        .push()  向数组末尾添加一个元素，并返回新的数组长度
-        .pop()  删除最后一个元素,并返回被删除的元素
-        .reverse()  反转数组顺序
-        .sort((item) => {})  数组排序
-        .slice(start, end)  选取数组的一部分，并返回新数组
-        .splice(1, 1, '')  添加或删除元素,并返回被删除的元素
+    # Array数组
+        array.unshift()	向数组的开头添加一个或更多元素，并返回新的长度。
+        array.shift()	删除并返回数组的第一个元素。
+        array.push()	向数组的末尾添加一个或更多元素，并返回新的长度。
+        array.pop()	删除数组的最后一个元素并返回删除的元素。
+        array.reverse()	反转数组的元素顺序。
+        array.fill('', start, end)  使用一个值来替换数组
+        array.slice(start, end)	选取数组的一部分，并返回一个新数组
+        array.splice(index, num, newItem)	删除并返回删除元素后添加新元素
+        array.join()	把数组的所有元素中间放入一个字符串。生成新数组
+        array.indexOf()	搜索数组中的元素，并返回它所在的位置。
+        array.includes()	判断一个数组是否包含一个指定的值。
+        Array.isArray()   判断是否为数组
+        array.concat(newArr)  连接两个数组/字符串，并返回结果。
 
-        .concat(arr2);  连接两个数组
-        .fill('', 0, 2)  填充数组
-        .join()  把数组每个元素放入一个字符串
-
-        .forEach((item) => {})  //遍历数组里的每个元素并执行一遍回调  //修改原数组
-        .map((item) => {})  通过指定函数处理每个元素，并返回处理后的数组  //不修改原数组，返回新数组
-        .every((item) => {})  遍历每一个数组是否符合条件，全符合为true,否则false
-        .filter((item) => { arr2.has(item)})  //过滤器,返回所匹配的条件，生成新的数组   .has//筛选所匹配的值
-        .some((item) => {})  检测数组元素中是否含有符合指定条件，只要有一项满足条件，就会返回true
-
-        .find((item) => {})  //返回第一个所匹配的值
-        .findIndex(item => )  //返回所匹配元素的下标
-        
-        .isArray()   判断是否为数组
-        
-        .entries();  返回数组可迭代对象
-        .from()  通过给定对象中创建一个数组(数组为对象中属性值集合)
-        .flat(2)  将多维数组转换成低维数组，参数为深度
-
-        Number()           将字符串转换为数字
-        Number.EPSILON     js表示的最小精度
-        Number.isFinite()  判断是否为有限数
-        Number.isNaN()     判断是否为非数
-        Number.isInteger() 判断是否为整数
-        Number.parseInt()  字符串转整数
-        
-        # Math
-            .abs()  返回绝对值
-            .ceil()  对数进行上舍入
-            .floor()  对数进行下舍入
-            .round()  四舍五入
-            .max()  返回最高值
-            .min()  返回最低值
-            .pow(x, y)  返回x的y次幂
-            .random()  1~0之间的随机数
-            .trunc()       去掉小数部分
-            .sign()        判断为正数 负数 还是零
+        array.forEach((item) => {})  遍历数组(改变原数组)
+        array.map((item) => {})  遍历数组(不改变原数组)
+        array.filter((item) => {})  过滤器,返回所匹配的值，生成新的数组
+        array.every((item) => {})  遍历数组是否符合条件，全符合为true,否则false
+        array.some((item) => {})  遍历数组是否含有符合条件，只要有一项满足条件，就会返回true
+        array.find((item) => {})  //返回第一个所匹配的值
+        array.findIndex(item => {})  //返回所匹配元素的下标
+        array.sort(item => {})	对数组的元素进行排序。默认升序
     
-    # 字符串
+        Array.from(arr, callback)	通过给定的对象中创建一个数组(必须要有length属性)
+        array.flat(2)  将多维数组转换成低维数组，参数为深度
+        array.flatMap(item => {})	将多维数组降维并遍历数组
+
+        array.lastIndexOf()	从后面搜索数组中的元素，并返回它第一次出现的位置。
+        array.reduce((total, value, index, arr)=>{}, v)	累加器（从左到右）
+        array.copyWithin(index, start, end)  拷贝到指定位置，开始拷贝元素的位置	
+        array.of('item')	将一组值转换为数组。
+        array.at(index)	返回索引值的值(可以是负数)
+        array.keys()	返回数组的可迭代对象，包含原始数组的键(key)。
+        array.entries()	返回数组的可遍历对象num.next().value
+
+    # Number
+        Number()  将字符串转换为数字
+        Number.EPSILON  js表示的最小精度
+        Number.isFinite()  判断是否为有限数
+        Number.isNaN()  判断是否为非数
+        Number.isInteger()  判断是否为整数
+        Number.isSafeInteger  检测指定参数是否为安全整数。
+        Number.parseInt()  字符串转整数
+        Number.toFixed(num)  保留几位小数
+        
+    # Math
+        Math.abs(num)  返回绝对值
+        Math.ceil()  对数进行上舍入
+        Math.floor()  对数进行下舍入
+        Math.round()  四舍五入
+        Math.max(arr)  返回最高值
+        Math.min(arr)  返回最低值
+        Math.pow(x, y)  返回x的y次幂
+        Math.random()  1~0之间的随机数
+        Math.trunc()  去掉小数部分
+        Math.sign()  判断为正数 负数 还是零
+        Math.sqrt(num)	返回数的平方根。
+    
+    # String 对象
         属性
-            constructor  返回创建字符串属性的构造函数
-            .prototype  向对象添加属性方法
+        length  字符串的长度
+        constructor	 返回创建字符串属性的构造函数
+        prototype  允许您向对象添加属性和方法
 
         方法
-            .trim()  去除首尾空白
-            .toString()  返回字符串对象值
+        valueOf()	返回字符串原始值
+        toString()	返回一个字符串
+        trim()	去除首尾空白,trimStart()|trimEnd()
+        charAt(index)	返回在指定索引的字符
+        toLowerCase()	把字符串转换为小写
+        toUpperCase()	把字符串转换为大写
+        search('')  查找相匹配的值,如果没有找到匹配的字符串则返回 -1。
 
-            .indexOf()  返回指定的字符串值首次出现的位置。如果没有找到匹配的字符串则返回 -1。
-            .charAt(index)  返回指定索引位置的字符
-            .concat(string)  连接字符串并返回
-            .includes('')  判断字符串是否包含某个值
-            .lastlndexOf('')  返回指定字符最后一次出现的索引值
+        match(reg)	正则表达式的匹配,返回匹配值
+        matchAll(reg)  批量匹配
+        substr(index, num)	从索引提取字符串中指定数目的字符
+        substring(index, index)	提取字符串中两个指定的索引号之间的字符。
+        repeat(num)  复制字符串指定次数，并将它们连接在一起返回
+        replace('newStr', 'oldStr')  匹配字符串并替换(单个)
+        replaceAll('newStr', 'oldStr')	匹配字符串并替换(所有)
+        
+        startsWith()  查看字符串是否以指定的字符串开头。
+        endsWith('')  判断当前字符串是否是以指定的子字符串结尾的
 
-            .toLowerCase()   转小写
-            .toUpperCase()   转大写
+        charCodeAt()	返回在指定的位置的字符的 Unicode 编码。
+        fromCharCode()	将 Unicode 编码转为字符。
 
-            valueOf()       返回某个字符串对象的原始值
-            
-            trimStart()     去除左侧
-            trimEnd()       去除右侧
-            split()         字符串转化  p.split(':')[2] 以：分割，取索引为2的值
+    # Date对象
+        get/set/getUTC/setUTC
+        getTime()	返回 1970 年 1 月 1 日至今的毫秒数。
+        getFullYear()   返回年份
+        getMonth()      返回月份(0-11)
+        getDate()       返回当日
+        getHours()      返回小时
+        getMinutes()    返回分钟
+        getSeconds()	返回秒数
+        getMilliseconds()   返回毫秒
 
-            matchAll()      数据批量提取
+        parse()	返回1970年1月1日午夜到指定日期（字符串）的毫秒数。
+        getDay()        一周中的某一天
+        UTC()	根据世界时返回 1970 年 1 月 1 日 到指定日期的毫秒数。
+        getUTCDay()	根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。
+
+        toJSON()	以 JSON 数据格式返回日期字符串。
+        toISOString()	使用 ISO 标准返回字符串的日期格式。
+        toDateString()	把 Date 对象的日期部分转换为字符串。
+        toLocaleString()	根据本地时间格式，把 Date 对象转换为字符串。2023/5/31 14:11:53
+        toLocaleDateString()	根据本地时间格式，把 Date 对象的日期部分转换为字符串。2023/5/31
+        toLocaleTimeString()	根据本地时间格式，把 Date 对象的时间部分转换为字符串。14:12:12
+        
+        toString()	转换为字符串。Wed May 31 2023 14:12:31 GMT+0800 (中国标准时间)
+        toTimeString()	把 Date 对象的时间部分转换为字符串。14:12:57 GMT+0800 (中国标准时间)
+        toUTCString()	根据世界时，把 Date 对象转换为字符串。
 
     # 对象扩展
         Object.is(a, b)    判断两个值是否相等
@@ -107,13 +135,6 @@
         Object.fromEntries()  将二维数组转换成对象
         Object.entries()      将对象转换成二维数组
 
-    # 日期
-        milliseconde  时间戳
-        https://www.runoob.com/jsref/jsref-obj-date.html  日期文档
-
-    # 正则表达式
-        https://www.runoob.com/jsref/jsref-obj-regexp.html
-
     # 函数
         # this指向
             myFun.call(obj, 'xx', 'xx')
@@ -125,17 +146,27 @@
         parseInt()  解析字符串并返回整数
         parseFloat()  解析字符串并返回浮点数
 
-    #判断
-        值类型可以用typeof，引用类型用instanceof。
-
+    # 条件语句
         不同的结果执行不同的代码
-            switch(){
+            switch(item){
                 case 1: xxx;
+                break;
                 case 2: sss;
                 default: ccc;
             }
-        instanceof  //判断一个属性是否存在一个对象身上
-            value instanceof Promise
+
+    # 循环
+        for(let i=0; i<number; i++){}
+
+        for(item in obj){}
+
+        while(){}
+
+        do{}while()
+
+        break 跳出循环
+
+        continue 跳过本次循环
 
     # JSON
         JSON.parse(data)  将JSON转换成字符串
@@ -154,19 +185,17 @@
 
             in = setTimeout(() => {}，1000)
 
-    # Cookie
-        document.cookie  返回所有cookie
-        document.cookie="username=John Doe";  创建
-        document.cookie="username=";  删除
-        expires=Thu, 18 Dec 2043 12:00:00 GMT;  添加过期时间
-
 ## 事件
     event.target  触发事件的元素
-
     data-xx='xx' 自定义属性
-    .getAttribute('data-xx')
 
     # 鼠标事件
+        <!-- 
+            nouse  鼠标
+            enter  进入
+            leave  离开
+         -->
+
         click  鼠标单击
         dblclick  双击
         contextmenu  点击鼠标右键
@@ -194,98 +223,194 @@
         focusout   即将失去焦点时
         input      获取用户输入时
         reset      表单重置时
-        search     搜索框输入文本时
         select     选取文本时
         submit     提交表单时
-
-    # HTML 音频/视频 DOM 参考手册
-        https://www.runoob.com/tags/ref-av-dom.html
 
     #事件传播
         event.stopPropagation();  //阻止事件传播
         event.preventDefault()  取消默认行为
 
-    # 鼠标位置
-        event.offsetX/offsetY
-        event.clientX  跟screenX相比就是将参照点改成了浏览器内容区域的左上角，该参照点不会随之滚动条的移动而移动。
-              clientY
-              screenX  鼠标位置相对于用户屏幕水平偏移量，而screenY就是垂直方向的，此时的参照点也就是原点是屏幕的左上角。
-              screenY
-              pageX： 参照点也是浏览器内容区域的左上角，但它会随着滚动条而变动
-
-    # 绑定事件
-        box.addEventListener('mouseout',function(){
-            console.log("haha")
-        }, true/false捕获or冒泡)
-
-        removeEventListener()  移除事件
-
 ## Dom Document对象
+     <!-- 
+        document  文档
+        element  元素
+        attribute  属性
+        text  文本
+        comment  注释
+        node  节点
+        child  子
+
+        create  创建
+        insert  插入
+        replace  替换
+        remove  删除
+
+        before  在...之前
+     -->
+
     # 获取元素
-        document.getElementsByClassName();  //获取所有指定类名的元素（[0]获取第一个元素）
+    document对象
         document.getElementById();  //返回指定 ID 的元素
+        document.getElementsByClassName()	返回文档中所有指定类名的元素集合
         document.getElementsByName();  //返回带有指定名称的对象的集合（name：xxx）
-        document.getElementsByTagName();  //返回带有指定标签名的对象的集合（[0]获取第一个元素）
+        document.getElementsByTagName()	返回指定标签名的所有子元素集合。
+        document.querySelector()	返回匹配指定 CSS 选择器元素的第一个子元素
+        document.querySelectorAll()	返回匹配指定 CSS 选择器元素的所有子元素节点列表
 
-        document.querySelector();  //返回文档中匹配指定CSS选择器的一个元素
-        document.querySelectorAll()；  //返回所有的元素
+        document.open()	打开一个流，以收集来自任何.write() 或.writeln() 方法的输出。
+        document.write()	向文档写 HTML 表达式 或 JavaScript 代码。
+        document.writeln()	等同于 write() 方法，不同的是在每个表达式之后写一个换行符。
 
-        .parentNode();  某元素的父节点
-        .childNodes();  某元素的子节点
-        .previousElementSibling  某元素的上一个兄弟节点
-        .nextElementSibling  某元素的下一个兄弟节点
-        .firstElementChild	返回元素的第一个子元素
-        .lastChild	    返回最后一个子节点
-        .insertBefore();  指定子节点前面插入新的子节点
-        .textContent	设置或返回一个节点和它的文本内容
+        基本属性/方法
+        document.documentElement	返回文档的根节点
+        document.body	返回文档的body元素
+        document.title	返回当前文档的标题。
+        document.cookie	设置或返回与当前文档有关的所有 cookie。
+        document.URL	返回文档完整的URL
+        document.baseURI	返回文档的绝对基础 URI
+        document.domain	返回当前文档的域名。
+        document.readyState	返回文档状态 (载入中……)
+        document.referrer	返回载入当前文档的文档URL
+        document.activeElement	返回当前获取焦点元素
+        document.documentMode	返回用于通过浏览器渲染文档的模式
+        document.documentURI	设置或返回文档的位置
+        document.inputEncoding	返回用于文档的编码方式（在解析时）
+        document.lastModified	返回文档被最后修改的日期和时间。
+        document.forms	返回对文档中所有 Form 对象引用
+        document.images	返回对文档中所有 Image 对象引用
+        document.scripts	返回页面中所有脚本的集合。
+        document.strictErrorChecking	设置或返回是否强制进行错误检查。
 
-        .innerHTML();  //向标签放入文本或标签
+        创建
+        document.createElement()	创建元素节点。
+        document.createAttribute()	创建一个属性节点
+        document.createTextNode()	创建文本节点。
+        document.createComment()	方法可创建注释节点。
+        document.createDocumentFragment()	创建空的文档片段对象，并返回此对象。
+        document.normalize()	删除空文本节点，并连接相邻节点
+    
+    element属性/方法
+        添加/移除事件
+        element.addEventListener('', ()=>{}, true/false捕获or冒泡)	向指定元素添加事件句柄
+        element.removeEventListener()	移除由 addEventListener() 方法添加的事件句柄
 
-        .insertAdjacentHTML(position,text)  //beforbegin插入自身元素前面、afterbegin插入到元素第一个子节点之前、beforeend元素最后一个子节点之后、afterend元素自身的后面
+        元素操作
+        element.firstElementChild	返回元素的第一个子元素
+        element.lastElementChild	返回元素的最后一个子元素
+        element.previousElementSibling	元素的前一个兄弟元素
+        element.nextElementSibling	返回元素下一个兄弟元素
+        element.children	返回元素的子元素的集合
 
-        .appendChild();  //创建新的子节点到尾部
-        .createElement();  创建元素节点
-        .removeChild();  删除子节点
-        .replaceChild();  替换子节点
+        element.appendChild(node)	为元素添加一个新的子元素0
+        element.insertBefore(newNode, oldnode)	元素的子元素之前插入一个新的子元素
+        element.removeChild(node)	删除一个子元素
+        element.replaceChild(newNode, oldnode)	替换一个子元素
 
-        .createAttribute();  创建属性节点
-        .attributes();  读取元素的属性节点
-        .createTextNode();  创建文本节点
+        .insertAdjacentHTML('position', html)
+        .insertAdjacentElement('position', node)
+        .insertAdjacentText('position',text)
+            afterbegin插入到元素第一个子节点之前
+            beforeend元素最后一个子节点之后
+            beforbegin插入自身元素前面
+            afterend元素自身的后面
 
-        .setAttribute('name', 'value');  //给标签设置属性
-        .getAttribute();  返回指定的属性值
-        .className='value';  //给标签设置class属性
+        节点操作
+        element.parentNode	返回元素的父节点
+        element.firstChild	返回元素的第一个子节点
+        element.lastChild	返回元素的最后一个子节点
+        element.previousSibling	返回元素上一个节点
+        element.nextSibling	返回该元素的下一个节点
+        element.childNodes	返回元素的所有子节点
 
-
-        .children	返回元素的子元素的集合
-        .previousSibling	返回某个元素紧接之前元素
-        .nextSibling	返回指定元素之后的下一个兄弟元素
-
-        element.focus()	获取焦点
-        element.hasAttribute()	如果元素中存在指定的属性返回 true，否则返回false。
+        element.getAttributeNode(attribute)	返回指定属性节点
+        element.setAttributeNode(attributeNode)	设置或者改变指定属性节点。
+        element.removeAttributeNode(attributeNode)	删除指定属性节点并返回移除后的节点。
         
-        element.tagName	作为一个字符串返回某个元素的标记名（大写）
+        属性操作
+        element.getAttribute(attr)	返回指定元素的属性值
+        element.setAttribute('name', 'value')	设置或者改变指定属性并指定值。
+        element.removeAttribute(attr)	从元素中删除指定的属性
+        element.attributes	返回一个元素的属性数组
+    
+        判断boolean
+        element.hasAttribute('attr')	如果元素中存在指定的属性返回 true，否则返回false
+        element.hasAttributes()	 如果元素有任何属性返回true，否则返回false
+        element.hasChildNodes()	返回一个元素是否具有任何子元素
+        element.hasFocus()	返回布尔值，检测文档或元素是否获取焦点
+
+        element.isContentEditable	如果元素内容可编辑返回 true，否则返回false
+        element.isEqualNode(element)	检查两个元素是否相等
+        element.isSameNode(element)	检查两个元素所有有相同节点。
+
+        基本属性/方法
+        element.id	设置或者返回元素的 id。
+        element.style	设置或返回元素的样式属性
+        element.className	设置或返回元素的class属性
+        element.classList	返回元素的类名，作为 DOMTokenList 对象。
         element.title	设置或返回元素的title属性
+        element.innerHTML	设置或者返回元素的内容。
+        element.toString()	一个元素转换成字符串
+        element.focus()	设置文档或元素获取焦点
+        element.tagName	作为一个字符串返回某个元素的标记名（大写）
+        element.textContent	设置或返回一个节点和它的文本内容
+        element.tabIndex	设置或返回元素的标签顺序。
+        element.lang	设置或者返回一个元素的语言。
+        element.nodeName	返回元素的标记名（大写）
+        element.nodeType	返回元素的节点类型
+        element.nodeValue	返回元素的节点值
+        element.cloneNode()	克隆某个元素
 
     # 获取滚动条高度
+        <!-- 
+            scroll  滚动
+         -->
         const height = document.documentElement.scrollTop || document.body.scrollTop
 
-        onscroll  滚动条事件
-        window.scrollTo({
-            behavior: 'smooth'  //滚动方式,平滑、
-        })  //滚动到哪
-
+        element.offsetWidth	 返回元素的宽度，包括边框border
+        element.offsetHeight  返回任何元素的高度包括边框border
+        element.offsetParent	返回元素的偏移父元素
+        element.offsetLeft	返回当前元素的相对水平偏移位置的偏移容器
+        element.offsetTop	返回当前元素的相对垂直偏移位置的偏移容器
+        element.clientWidth	在页面上返回内容的可视宽度
+        element.clientHeight	在页面上返回内容的可视高度
+        element.clientLeft	表示一个元素的左border的宽度，以像素表示。
+        element.clientTop	表示一个元素的顶部border的宽度，以像素表示。
+        element.scrollWidth	返回元素的整个宽度（包括带滚动条的隐蔽的地方
         element.scrollHeight	返回整个元素的高度（包括带滚动条的隐蔽的地方）
-        element.scrollLeft	元素的左边缘和左边缘之间的距离
-        element.scrollTop	实际元素的顶部边缘和顶部边缘之间的距离
-        element.scrollWidth	返回元素的整个宽度（包括带滚动条的隐蔽的地方）
+        element.scrollLeft	返回元素的左边缘和视图左边缘之间的距离
+        element.scrollTop	返回元素的顶部边缘和视图顶部边缘之间的距离
+        
+            offset  包含边框
+            client  不含边框(不含滚动条)
+            scroll  不含边框(包含滚动条)
+
+## 属性对象
+    attr.isId	如果属性是 ID 类型，则 isId 属性返回 true，否则返回 false。
+    attr.name	返回属性名称
+    attr.value	设置或者返回属性值
+    attr.specified	如果属性被指定返回 true ，否则返回 false
+        
+    nodemap.getNamedItem()	从节点列表中返回的指定属性节点。
+    nodemap.item()	返回节点列表中处于指定索引号的节点。
+    nodemap.length	返回节点列表的节点数目。
+    nodemap.removeNamedItem()	删除指定属性节点
+    nodemap.setNamedItem()	设置指定属性节点(通过名称)
 
 ## BOM
-    # Window
-        window.location.href = ''  //页面跳转
-        window.location.reload()  //刷新页面
+    # window
+        window.alert()	显示带有一段消息和一个确认按钮的警告框。
+        window.confirm()	显示带有一段消息以及确认按钮和取消按钮的对话框。
+        window.prompt()	显示可提示用户输入的对话框。
 
-        <!-- 本地存储/会话存储 -->
+        window.getSelection()	返回一个 Selection 对象，表示用户选择的文本范围或光标的当前位置
+        window.getComputedStyle()	获取指定元素的 CSS 样式。
+
+        window.innerHeight  返回窗口的文档显示区的高度。
+        window.innerWidth	 返回窗口的文档显示区的宽度。
+        window.scrollTo(x, y)	把内容滚动到指定的坐标(绝对位置)
+        window.scrollBy(x, y)	按照指定的像素来滚动内容。(相对位置)
+
+        本地存储/会话存储
             本地存储： 持久化
                 window.localStorage.setItem('key', 'value');  //添加本地存储
                 window.localStorage.getItem(key);  //读取数据：
@@ -294,8 +419,27 @@
             会话存储： 并非持久化
                 sessionStorage
 
-        window.innerHeight - 浏览器窗口的内部高度(包括滚动条)document.body.clientHeight
-        window.innerWidth - 浏览器窗口的内部宽度(包括滚动条)document.body.clientWidth
+            Cookie
+                document.cookie  返回所有cookie
+                document.cookie="username=John Doe";  创建
+                document.cookie="username=";  删除
+                expires=Thu, 18 Dec 2043 12:00:00 GMT;  添加过期时间
+
+    # location
+        window.location.hash	返回一个URL的锚部分
+        window.location.host	返回一个URL的主机名和端口
+        window.location.hostname	返回URL的主机名
+        window.location.href	返回完整的URL/页面跳转
+        window.location.pathname	返回的URL路径名。
+        window.location.port	返回一个URL服务器使用的端口号
+        window.location.protocol	返回一个URL协议
+        window.location.search	返回一个URL的查询部分
+        window.location.reload()  //刷新页面
+
+    # history历史记录
+        window.history.back()  回退
+        window.history.forward()  前进
+        window.history.go()  指定步数
 
 ## ES6
     # rest参数
@@ -351,15 +495,6 @@
                     super(xxx)  调用父类的构造方法
                 }
             }
-
-    # 迭代器
-        for of 循环原理
-
-    # 生成器函数
-        function* gen(){
-            yield xxx;  //函数分割线
-        }
-        gen.next();
 
 ## 模块化
     # CommonJS
@@ -440,6 +575,10 @@
         Promise.race()
             传入promise数组
             返回一个新的promise，最先完成promise状态改变的结果
+
+## RegExp
+    https://www.runoob.com/jsref/jsref-obj-regexp.html
+    const phone = /^1\d{10}$/
 
 ## jQuery
     JS函数库，封装简化DOM操作

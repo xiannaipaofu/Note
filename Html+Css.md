@@ -123,6 +123,9 @@
                 <source src="movie.mp4" type="video/mp4">
             </video>
 
+        # HTML 音频/视频 DOM 参考手册
+        https://www.runoob.com/tags/ref-av-dom.html
+
         <!-- canvas图形 -->
             https://www.runoob.com/html/html5-canvas.html
 
@@ -389,18 +392,11 @@
         color: @name;
     }
 
-    # 注释
-        以//开头的注释，不会编译到css文件中
-        以/**/开头的注释会编译到css文件中
-
     # 变量
         声明变量
             属性值：@xxx：xxx；
             选择器：#@{xxxxx}
             url：@{url}
-
-    # 嵌套
-        &
 
     # 混合
         div(@color){
@@ -422,6 +418,7 @@
         }
 
 ## Sass
+    https://www.sass.hk/
     Live Sass Compiler扩展
         配置
         // 定制样式
@@ -458,7 +455,7 @@
 
         div {
             color: $color;
-            $width: 50px !global;
+            $width: 50px !global;  //全局变量
         }
 
     导入
