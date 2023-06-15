@@ -226,11 +226,11 @@
             background-image: repeating-linear-gradient(red, yellow 10%, green 20%);  重复线性渐变
 
         径向渐变radial-gradient
-            background-image: radial-gradient(circle圆形/ellipse椭圆形, farthest at position,color);
+            background-image: radial-gradient(circle圆形/ellipse椭圆形, [farthest at position],color);
             closest-side at 50% 50%  向最近边渐变
             farthest-side at 50% 50%  向最远边渐变
             closest-corner at 50% 50%  向最近角渐变
-            farthest-corner at 50% 50%  向最圆角渐变 默认
+            farthest-corner at 50% 50%  向最远角渐变 默认
 
             background-image: repeating-radial-gradient(red, yellow 10%, green 20%);  重复径向渐变
 
@@ -295,9 +295,9 @@
 
     <!-- 过渡 -->
         transition: width 1s linear 1s;
-            transition-property: width;  属性
+            transition-property: width;  属性 or all
             transition-duration: 1s;  过渡时间
-            transition-timing-function: linear;  过渡动画
+            transition-timing-function: linear;  过渡动画linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);
             transition-delay: 2s;  何时开始
 
     <!-- 动画 -->

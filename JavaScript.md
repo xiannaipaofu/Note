@@ -188,6 +188,10 @@
 ## 事件
     event.target  触发事件的元素
     data-xx='xx' 自定义属性
+    event.target.dataset  读取自定义属性
+
+    event.offsetX  鼠标相对于事件源元素（srcElement）的X,Y坐标
+    event.offsetY
 
     # 鼠标事件
         <!-- 
@@ -366,6 +370,7 @@
          -->
         const height = document.documentElement.scrollTop || document.body.scrollTop
 
+        
         element.offsetWidth	 返回元素的宽度，包括边框border
         element.offsetHeight  返回任何元素的高度包括边框border
         element.offsetParent	返回元素的偏移父元素
@@ -410,6 +415,9 @@
         window.scrollTo(x, y)	把内容滚动到指定的坐标(绝对位置)
         window.scrollBy(x, y)	按照指定的像素来滚动内容。(相对位置)
 
+            登录/注册流程            服务器                  数据库
+                用户申请----    向数据库发请求----     生成唯一id标识并返回
+
         本地存储/会话存储
             本地存储： 持久化
                 window.localStorage.setItem('key', 'value');  //添加本地存储
@@ -418,12 +426,14 @@
                 window.localStorage.clear();  //删除所有数据
             会话存储： 并非持久化
                 sessionStorage
-
-            Cookie
-                document.cookie  返回所有cookie
-                document.cookie="username=John Doe";  创建
-                document.cookie="username=";  删除
-                expires=Thu, 18 Dec 2043 12:00:00 GMT;  添加过期时间
+            会话控制
+                session
+                token
+                Cookie
+                    document.cookie  返回所有cookie
+                    document.cookie="username=John Doe";  创建
+                    document.cookie="username=";  删除
+                    expires=Thu, 18 Dec 2043 12:00:00 GMT;  添加过期时间
 
     # location
         window.location.hash	返回一个URL的锚部分
@@ -511,19 +521,6 @@
             npm i browserify
             browserify url -o url
 
-    # AMD
-        暴露模块
-            define(function(){
-                return 模块
-            })
-            define(['module1', 'module2'], function(){
-                return 模块
-            })
-        引入模块
-            require(['module1', 'module2'], function(){
-                使用m1/m2
-            })
-
     # ES6
         暴露模块
             分别暴露
@@ -531,7 +528,7 @@
             统一暴露
                 export {}
             默认暴露
-                export defaylt name = {}
+                export default name = {}
 
         引入模块
             常规暴露
@@ -579,6 +576,12 @@
 ## RegExp
     https://www.runoob.com/jsref/jsref-obj-regexp.html
     const phone = /^1\d{10}$/
+
+
+    let iphone = /^1[0-9]{10}$/
+    let password = /^[a-z][a-z0-9]{5}$/
+    ^ 开始标记
+    $ 结束标记
 
 ## jQuery
     JS函数库，封装简化DOM操作
