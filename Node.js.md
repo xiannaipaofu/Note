@@ -590,29 +590,44 @@
 
 ## Git
     http://git-scm.com/docs/git-log
-
-    ssh-keygen -t rsa -Cgit@github.com:xiannaipaofu/demo.git  //生成安全认证  
+    
+    git config --list  // 显示当前git配置信息
+    设置提交代码时的用户信息/修改
+    git config --global user.name "MacBook Pro"
+    git config --global user.email "1367682868@qq.com"
+    获取SSH  ssh-keygen -t rsa   enter>>>  配置SSH
+    克隆远程仓库git clone git@github.com:xiannaipaofu/JavaScript.git
 
     git init
+    git status  //查看状态
     git add README.md
     git commit -m "first commit"
-    git remote add origin git@github.com:xxxx.git  配置远程连接为origin
+    git remote add origin git@github.com:xiannaipaofu/JavaScript.git  // 配置远程连接为origin
+        git remote -v  查看远程连接
+        git remote remove hello  删除远程连接
     git push -u origin master  上传至master分支
-    git push --set-upstream origin master  关联远程仓库上的分支
- 
-    git clone <仓库地址>  //克隆仓库
+        -u: 简化之后push操作
+        -f: 覆盖
+        git push --set-upstream origin master  关联远程仓库上的分支
+
+    git checkout master // 切换分支
+    git branch main master -f  // 重命名分支{new, old}
+    git checkout main
+    git push origin main -f  // 推送
+
     git pull origin master  //下载远程代码并合并
     git pull origin master --allow-unrelated-histories  允许不相关历史提交，并强制合并
+    git fetch origin master:demo  拉取远程代码到本地master并创建一个demo分支
+    git merge 主 副  //合并分支
 
-    git status  //查看当前仓库状态是否有变更文件
     git blame <file>  //查看指定文件修改记录
 
-    git branch name  创建分支、-v查看所有分支、-d name删除分支
+    git branch name  创建分支
+        -v查看所有分支
+        -d name删除分支
+        -m oldBranch newBranch  分支重命名
+        
     git checkout name  切换分支、-b name创建并切换
-    git merge <>  //合并分支
-    git branch -m oldBranch newBranch  分支重命名
-
-    git remote remove hello  删除远程连接
 
     git log --oneline/--graph  //历史提交记录、历史记录何时出现分支合并
     git reset --soft/--hard <hash>  //不带参数(还原)、回退版本、回退并删除之前提交的所有版本
@@ -625,13 +640,7 @@
 
     git diff file1.ext file2.ext  //比较文件的不同
     git diff  显示工作空间和暂存区的差异
-    $git diff --cached  比较暂存区和提交的差异
-
-    git config --list  //显示当前git配置信息
-
-    设置提交代码时的用户信息/修改
-    git config --global user.name "runoob"
-    git config --global user.email test@runoob.com
+    git diff --cached  比较暂存区和提交的差异
 
     1. git 开启代理
         git config --global http.proxy http://127.0.0.1:41091
