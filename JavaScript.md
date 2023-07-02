@@ -1,8 +1,21 @@
-## js原理
-    
+## JavaScript 原理
+    运行原理：编译一行，执行一行。
+        编译    声明变量
+        执行   赋值
+        赋值变量LHS查询
+        引用变量RHS查询
 
+    作用域：能够储存变量中的值，并且能对其进行访问或修改的区域。
 
-## javaScript
+    异常处理：
+        ReferenceReeor: 作用域相关
+        TypeError: 操作非法或不合理
+
+    with()/eval()：
+        把字符串当作js代码执行（非"use strict"；模式下）
+        注意️：影响性能，引擎无法在编译时对其作用域查找进行优化。
+
+## javaScript API
     "use strict";  严格模式
     debugger;  断点、调试代码
 
