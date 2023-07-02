@@ -610,7 +610,7 @@
     git push -u origin master  上传至master分支
         -u: 简化之后push操作
         -f: 覆盖
-        git push --set-upstream origin master  关联远程仓库上的分支
+        git push --set-upstream origin 本地:远程  关联远程仓库上的分支
         git push <远程主机名> <本地分支名>:<远程分支名>
         git push origin --delete master  // 删除远程仓库的分支
 
