@@ -628,10 +628,10 @@
     git checkout name  切换分支
         -b name创建并切换
 
-    git log --oneline  // 历史提交记录、历史记录何时出现分支合并
-	--graph
-    git reset --soft  // 不带参数(还原)、
-	--hard hash  回退版本回退并删除之前提交的所有版本
+    git blame <file>  //查看指定文件修改记录
+
+    git log --oneline/--graph  //历史提交记录、历史记录何时出现分支合并
+    git reset --soft/--hard <hash>  //不带参数(还原)、回退版本、回退并删除之前提交的所有版本
 
     git rm <>  //删除文件
     git mv <oldFile> <newFile>  //移动文件/重命名
@@ -639,7 +639,6 @@
     git cat-file -p hash  //
     git rm -r -f --cached ./   (删除缓存)
 
-git blame <file>  //查看指定文件修改记录
     git diff file1.ext file2.ext  //比较文件的不同
     git diff  显示工作空间和暂存区的差异
     git diff --cached  比较暂存区和提交的差异
