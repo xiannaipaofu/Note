@@ -1,3 +1,7 @@
+## js原理
+    
+
+
 ## javaScript
     "use strict";  严格模式
     debugger;  断点、调试代码
