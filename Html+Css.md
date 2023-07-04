@@ -96,8 +96,8 @@
     <!-- 字符 -->
         https://www.runoob.com/html/html-entities.html
         &lt<;&gt>;
-
-    ## HTML5
+        
+## HTML5
         <!-- 预选列表 -->
             <input type="text" list="ageList">
             <datalist id="ageList">预选列表
@@ -126,17 +126,123 @@
         # HTML 音频/视频 DOM 参考手册
         https://www.runoob.com/tags/ref-av-dom.html
 
+        <!-- 地图 -->
+            https://www.runoob.com/html/html5-geolocation.html
+
         <!-- canvas图形 -->
             https://www.runoob.com/html/html5-canvas.html
+            https://www.runoob.com/tags/ref-canvas.html
+
+            弧度
+                360/(2*Math.PI)=弧度
+
+            必须指定宽高
+                <canvas id='charts' width='800' height='800'></canvas>
+
+            样式:
+                需在绘制之前设置
+
+            // 标签
+            <canvas id="CANVAS" width="800" height="600"></canvas>
+            // 获取元素
+            const canvas = document.querySelector('#CANVAS')
+            // 获取画布的笔(上下文)
+            const ctx = canvas.getContext('2d')
+
+            // 描边
+            ctx.strokeStyle = 'blue'  // 设置图形线段颜色
+            ctx.lineWidth = '5'  // 设置图形线段宽度
+            ctx.moveTo(100, 100)  // 线段起点坐标
+            ctx.lineTo(200, 200)  // 线段结束坐标
+            ctx.closePath()  // 连接起点和终点
+            
+            ctx.fillStyle = 'pink'  // 设置图形填充颜色/文字颜色
+            ctx.fill()  // 填充图形
+
+            // 设置文字
+                ctx.font = '20px 微软雅黑'
+            // 绘制文字
+                ctx.fillText('数据可视化', 50, 50)
+                ctx.strokeText(text,x,y)  // 绘制空心的文本
+            
+            绘制矩形(描边)ctx.strokeRect(x, y, width, height)
+                ctx.strokeRect(300, 300, 100, 100)
+            绘制矩形(填充颜色)ctx.fliiRect(x, y, width, height)
+                ctx.fillRect(300, 300, 100, 100)
+
+            绘制圆形ctx.arc(x, y, radius, starAngle, endAngle, anticlockwise:true/false)
+                x: 圆心x坐标
+                y: 圆心y坐标
+                radius: 园半径
+                starAngle: 开始绘制弧度
+                endAngle: 结束绘制弧度
+                anticlockwise: 是否逆向
+
+                ctx.beginPath()  // 绘制圆形
+                ctx.arc(100, 100, 100, 0, 2*Math.PI, false)
+
+            清除画布ctx.clearRect(x, y, w, h)
+                ctx.clearRect(100, 100, 200, 200)
+
+            创建线条渐变ctx.createLinearGradient(x, y, x1, y1) 
+                // x、y: 开始线性渐变起始坐标
+                // x1、y1: 开始线性渐变结束坐标
+                let grd = ctx.createLinearGradient(0, 0, 800, 600)  // 创建线条渐变
+                grd.addColorStop(0, 'pink')  // 指定颜色停止，参数使用坐标来描述，可以是0至1
+                grd.addColorStop(1, 'white')
+                ctx.fillStyle = grd
+                ctx.fillRect(110, 300, 100, 250)
+
+            createRadialGradient(x,y,r,x1,y1,r1)  // 创建一个径向/圆渐变
+
+            ctx.stroke()  // 开始绘制
 
         <!-- SVG可缩放矢量图形 -->
             https://www.runoob.com/html/html5-svg.html
+            <svg id="SVG">
+                <!-- 
+                    stroke=''  线段颜色
+                    stroke-width=''  线段宽度
+                    fill=''  填充颜色
+                    fill-opacity=''  填充透明度
+                -->
+                <!-- 直线 -->
+                <!-- <line x1="100" y1="100" x2="200" y2="200" stroke="red"></line> -->
+                <!-- 折线 -->
+                <polyline points="200 200, 300 200, 400 400" stroke="red" fill-opacity="0.5"></polyline>
+                <!-- 矩形 -->
+                <rect x="100" y="100" width="100" height="100" fill="pink"></rect>
+                <!-- 圆 -->
+                <circle cx="50" cy="50" r="50" stroke="pink" fill="skyblue"></circle>
+                <!-- 圆或椭圆 -->
+                <!-- 
+                    cx="150" cy="50"  圆心坐标
+                    rx="150"  x轴半径
+                    ry="50"  y轴半径
+                -->
+                <ellipse cx="150" cy="50" rx="50" ry="50" fill="skyblue"></ellipse>
+                <!-- 多边形 -->
+                <polygon points="0 0, 10 20, 30 30" stroke="red"></polygon>
+                <!-- 任意图形 -->
+                <!-- 
+                    M 移动到初始位置
+                    L 画线
+                    Z 将结束和开始点闭合
+                -->
+                <path d="
+                    M 100 0
+                    L 100 200
+                    L 150 500
+                    L 200 200
+                    Z 300 0
+                ">
+                </path>
+            </svg>
 
         <!-- 拖放 -->
             https://www.runoob.com/html/html5-draganddrop.html
 
-        <!-- 地理位置 -->
-            https://www.runoob.com/html/html5-geolocation.html
+        
 
 
 ## CSS2
@@ -173,18 +279,20 @@
     <!-- 定位 -->
     position: absolute;  //绝对定位(父级)
     position: relative;  //相对定位(自身)
-    position： flxed;   //广告定位
+    position： fixed;   //广告定位
     position: sticky;  //粘性定位
 
     <!-- 输入框 -->
     outline: none;  //去除聚焦边框
-    placeholder=""   //输入框显示文字
     resize: none;  //禁止文本框重置大小
 
     <!-- 背景 -->
     background: url() center no-repeat;  //以图换字,居中，图片不重复、repeat-x、repeat-y
     background: transparent;  //背景透明
-    background-size:cover;  //背景图片尺寸  100% 100% 铺满比例
+    background-size: cover;  //背景图片尺寸  100% 100% 铺满比例
+
+    <!-- 字体 -->
+    font-weight: bold/bo;der/lighter;  // 粗、更粗、细 or 100 - 900
 
     <!-- 文本 -->
     text-indent: -100px;  //首行缩进

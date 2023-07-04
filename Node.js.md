@@ -50,6 +50,15 @@
         npm i rimraf
         rimraf xxxx
 
+    安装依赖
+        npm i 
+    启动开发
+        npm run serve
+    打包发布
+        npm run build
+    检查修复
+        npm run lint
+
 ## Buffer缓冲区
     在v6.0之前创建Buffer对象直接使用new Buffer()构造函数来创建对象实例，但是Buffer对内存的权限操作相比很大，可以直接捕获一些敏感信息，所以在v6.0以后，官方文档里面建议使用 Buffer.from() 接口去创建Buffer对象。
 
