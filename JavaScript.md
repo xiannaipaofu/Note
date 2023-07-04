@@ -83,6 +83,7 @@
         Math.trunc()  去掉小数部分
         Math.sign()  判断为正数 负数 还是零
         Math.sqrt(num)	返回数的平方根。
+        Math.PI  圆周率3.14159
     
     # String 对象
         属性
@@ -431,9 +432,6 @@
         window.innerWidth	 返回窗口的文档显示区的宽度。
         window.scrollTo(x, y)	把内容滚动到指定的坐标(绝对位置)
         window.scrollBy(x, y)	按照指定的像素来滚动内容。(相对位置)
-
-            登录/注册流程            服务器                  数据库
-                用户申请----    向数据库发请求----     生成唯一id标识并返回
 
         本地存储/会话存储
             本地存储： 持久化

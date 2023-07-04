@@ -114,6 +114,18 @@
     ## nextTick（钩子）
         this.$nextTick(()=>{})
 
+    ## this.$options
+        vue的实例属性，是一个对象，获取vue组件的方法和数据。
+        this.$options.data()这个是vue原始的数据，就是你页面刚加载时的data
+        this.$data这个是现在阶段的vue数据，就是你改变data的数据
+
+    ## 深度选择器
+        原生CSS  >>> .class
+
+        less  /deep/ .class
+
+        scss  ::v-deep .class
+
     ## 基本原理
         Key的原理
             key是虚拟DOM对象的标识，状态中的数据发生变化时，Vue会根据[新数据]生成[新的虚拟DOM]，[新虚拟DOM]与[旧虚拟DOM]进行差异比较。
@@ -176,7 +188,7 @@
             number：输入字符串转为有效的数字
             trim：输入首尾空格过滤
 
-## 事件
+### 事件
     组件绑定原生事件
         <Home @click.native></Home>  //不加修饰符相当于自定义事件
 
@@ -213,7 +225,7 @@
         5.Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名。
     -->
 
-## 插槽 
+### 插槽
     场景: 父子通信
         1.默认插槽
             父组件：
@@ -266,7 +278,7 @@
 
             **ElementUI插槽
 
-## 封装的过渡与动画
+### 封装的过渡与动画
     1.作用：在插入、更新或移除DOM元素时，在合适的时候给元素添加样式类名。
 
     2.写法：
@@ -297,7 +309,7 @@
             npm i anitate.css
             import 'anitate.css'
 
-## 配置代理服务器
+### 配置代理服务器
     编写vue.config.js配置具体代理规则：
         devServer:{
             proxy:{
@@ -654,105 +666,7 @@
 
         子组件
             <slot :todo="item"></slot>  //数据回传
-
-## 插件
-    ##nprogress 进度条
-        npm i nprogress
-
-        import nprogress from 'nprogress';  // 引入进度条
-        import 'nprogress/nprogress.css';  // 引入进度条样式
         
-        nprogress.start();  // 进度条开始
-        nprogress.done();  // 进度条结束
-
-    ##lodash防抖与节流
-        npm i lodash
-
-        import _ from 'lodash'  //引入lodash
-        import throttle from 'lodash/throttle'  // 引入节流
-        import debounce from 'lodash/debounce'  // 引入防抖
-        import cloneDeep from 'lodash/cloneDeep'  // 引用lodash的深拷贝
-
-        throttle(()=>{}, 50),  // 防抖
-
-        data1 = cloneDeep(data)  // 深度克隆
-
-        节流： 在规定的时间范围内不会重复触发回调，只有大于这个时间间隔才会触发。(设置cd)
-            _.throttle(function(){}, 1000)
-
-        防抖： 前面的所有的触发都被取消，最后一次执行在规定的时间之后才会触发。（回城）
-            _.debounce(function(){}, 1000)
-
-    ##swiper 轮播图
-        npm i swiper@5
-
-        main.js
-            import 'swiper/css/swiper.min.css'
-
-        <template>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"></div>
-                    <div class="swiper-slide"></div>
-                    <div class="swiper-slide"></div>
-                </div>
-
-                <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
-
-                <!-- 如果需要导航按钮 -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
-        </template>
-
-        <script>
-            import Swiper from 'swiper/js/swiper.min'
-
-            export default {
-                mounted() {
-                    const swiper = new Swiper('.swiper-container', {
-                        loop: true, // 循环模式选项
-
-                        autoplay:true,//等同于以下设置
-
-                        // 如果需要分页器
-                        pagination: {
-                            el: '.swiper-pagination',
-                            clickable: true
-                        },
-
-                        // 如果需要前进后退按钮
-                        navigation: {
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
-                        }
-                    })
-                }
-            };
-        </script>
-
-        <style scoped>
-            .swiper-container{
-                width: 600px;
-                height: 400px;
-            }
-        </style>
-
-    ##vue-lazyload 图片懒加载(vue2使用 1.3.4版本)
-
-
-    ##vee-validate 表单验证
-
-
-    ##moment.js  生成日期对象
-
-
-    ##qrcode 二维码
-
-    
-    ElementUL
-
 ## 前台项目：
     菜单联动 轮播图 分页器 放大镜 面包屑 登录 注册 日历
 
@@ -761,67 +675,14 @@
     https://github.com/PanJiaChen/vue-admin-template.git  git克隆链接
 
     "dev": "set NODE_OPTIONS=--openssl-legacy-provider & vue-cli-service serve",
-    修改package.json，在相关构建命令之前加入set NODE_OPTIONS=–openssl-legacy-provider  npm run dev报错
+    修改package.json，在相关构建命令之前加入set NODE_OPTIONS=–openssl-legacy-provider
+    npm run dev报错
 
     http://39.98.123.211:8170/swagger-ui.html
     http://39.98.123.211:8510/swagger-ui.html
 
-    proxy: {
-        '/dev-api': {
-            target: 'http://39.98.123.211',
-            pathRewrite: {'^/dev-api' : ''}
-        }
-    }
-
-    npm run lint --fix  //格式化代码规范
-
-    ElementUL
-        button  //type类型、icon图标、disabled是否禁用
-        input  //type: text/textarea、placeholder输入框占位文本
-
-        table  //data绑定的数据、border纵向边框、
-        table-column  //type:selection多选框/index索引/expand展开的按钮、lable显示的标题、prop对应列的内容(与data绑定)、width对应列宽度、align对齐方式
-        <template slot-scope="{row, column, $index}"></template>  //table-column作用域插槽
-
-        form  //model表单数据对象、表单验证rules、.validate检验校验是否通过、inline行内表单
-        form-item  //prop收集数据绑定对象、label标签文本、required是否必填
-
-        upload  //action上传地址、show-file-list是否显示已上传文件列表:on-success=""上传成功回调、:before-upload=""上传之前回调
-        
-        dialog  //对话框  title标题、visible是否显示
-        
-        $message  //({type: success/warning/info/error, message: '提示信息'})
-        messageBox
-            $msgbox(options)  //自定义
-            $alert(message, title, options)  //消息提示
-            $confirm(message, title, options)  //确认消息
-            $prompt(message, title, options)  //提交内容
-                message消息内容、title标题、options{
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }
-                .then()  //点击确定回调
-                .catch()  //点击取消回调
-
-        pagination  //分页器
-            :current-page="page"当前页数
-            page-size每页显示数据条数
-            total数据总条数
-            page-count分页器总页数
-            pager-count页码按钮数量
-            layout="prev, pager, next, jumper, sizes, total"  //组件布局
-            :page-sizes="[3, 5, 10]"  //每页显示数量设置
-            @current-change=""当前页数发生改变的回调
-            @size-change=""  展示数据条数发生改变的回调
-
-        150-200 后台管理系统  19h
-
-        150-160  4h
-        160-170  4h
-        170-180  3.5h
-        180-190  2.5h
-        190-200  5h
+        150-165  SPU
+        198-200  权限管理
 
 ## 开发流程
     <!-- npm install -g @vue/cli 全局安装Vue脚手架-->
@@ -834,15 +695,15 @@
         npm run build
         项目打包处理MAP文件
             vue.config.js:
-            productionSourceMap: false,
+            productionSourceMap: false, 
 
-    今日任务
-        使用插件
+        网格布局
         webpack打包
-        不同屏幕适配rem
-        浏览器兼容等问题
-
         手写深拷贝
+        工作遇到过什么bug，最后是怎么解决的？
+        bilibili前端面试视频
+        英语自学流程
+        过项目
 
 ## 购买服务器
     服务器打开端口号
@@ -867,6 +728,7 @@
             3.nginx服务器跑起来
             liux: service nginx start
             windows: start ngnix
+
 
 
 

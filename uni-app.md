@@ -141,7 +141,7 @@
 
     分包
 
-##  uni-app
+## uni-app
     condition启动模式配置
         "condition": {
             "current": 0,
