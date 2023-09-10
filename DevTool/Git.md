@@ -23,13 +23,12 @@
         git pull origin master --allow-unrelated-histories  // 允许不相关历史提交，并强制合并
         git fetch origin master:demo  // 拉取远程代码到本地master并创建一个demo分支
         
-
     # 上传代码
+        git push <远程主机名> <本地分支名>:<远程分支名>  // 上传仓库
         git push -u origin master  // 上传至master分支
             -u: 简化之后push操作
             -f: 覆盖
         git push --set-upstream origin 本地:远程  // 关联远程仓库上的分支
-        git push <远程主机名> <本地分支名>:<远程分支名>
         git push origin --delete master  // 删除远程仓库的分支
     
     # 开发操作
@@ -42,7 +41,7 @@
             -v查看所有分支
             -d name删除分支
             -m oldBranch newBranch  分支重命名
-            
+
         git checkout name  切换分支
             -b name创建并切换
 
