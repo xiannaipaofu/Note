@@ -18,11 +18,11 @@
         git remote rename old_name new_name  # 修改仓库名
 
     # 拉取代码
-        git pull origin master  //拉取远程代码与当前分支合并
+        git pull origin master  // 拉取远程代码与当前分支合并
         git pull <远程主机名> <远程分支名>:<本地分支名>  // 拉取到指定分支
         git pull origin master --allow-unrelated-histories  // 允许不相关历史提交，并强制合并
         git fetch origin master:demo  // 拉取远程代码到本地master并创建一个demo分支
-        git merge 主 副  //合并分支
+        
 
     # 上传代码
         git push -u origin master  // 上传至master分支
@@ -45,6 +45,8 @@
             
         git checkout name  切换分支
             -b name创建并切换
+
+        git merge 主 副  //合并分支
 
     # 回退版本
         git log --oneline/--graph  //历史提交记录、历史记录何时出现分支合并
