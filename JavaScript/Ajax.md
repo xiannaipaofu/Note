@@ -1,7 +1,9 @@
-## ajax
-    https://www.runoob.com/http/http-status-codes.html  状态码
+## HTTP协议
+    HTTPS协议默认端口443
+    HTTP协议默认端口80
+    127.0.0.1  // 本机
 
-    # 请求报文
+    ## 请求报文
         行      GET/POST（请求类型）    /s?ie=utf-8（url路径）     HTTP/1.1（协议版本）
         头      Host: atguigu.com（告知服务器请求体类型）
                 Cookie: name=guigu
@@ -12,7 +14,8 @@
 
     # 响应报文
         行      HTTP/1.1(协议版本)      200（响应状态码）       OK（响应状态字符串）
-        头      Content-Type: text/html;charset=utf-8（类型）(对响应体做相关描述) https://www.runoob.com/http/http-header-fields.html
+        头      Content-Type: text/html;charset=utf-8（类型）(对响应体做相关描述) 
+                    https://www.runoob.com/http/http-header-fields.html
                 Content-length: 2048（长度）
                 Content-encoding: gzip（压缩类型）
         空行
@@ -21,11 +24,22 @@
                     <head>
                     </head>
                     <body>
-                        <h1>尚硅谷</h1>
+                        <h1>hello HTTP</h1>
                     </body>
                 </html>
 
-    # 发送AJAX
+    ## 原生http模块
+        const http = require('http');  // 导入
+        const server = http.createServer((req, res) => {res.end('')  //设置响应体})  // 创建服务对象
+        server.listen(8000, ()=>{})  // 监听端口，启动服务
+
+        // 获取请求体
+        let body = ''
+        request.on('data', (chunk)=>{body += chunk })  
+        request.on('end', ()=>{console.log(body), res.end('')})
+
+## ajax
+    ## 发送AJAX
         xhr = new XMLHttpRequest();  // 创建对象
         xhr.open('get', 'url');  //设置请求方法和url
         xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');  // 设置请求头
@@ -41,12 +55,11 @@
         }
         <!-- // xhr.onload = function(){} //响应接收完毕 -->
 
-    # 解决跨域
+    ## 解决跨域
         # JSONP
             1.非官方的跨域解决方案，只支持get请求
             2.利用img、link、iframe、script标签的跨域能力来发送请求
-            3.使用
-                创建标签、设置src、设置回调、插入标签
+            3.使用创建标签、设置src、设置回调、插入标签
 
         # CORS跨域资源共享
             Access-Control-Allow-Origin  //允许跨域

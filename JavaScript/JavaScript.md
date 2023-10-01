@@ -430,8 +430,6 @@
 
             in = setTimeout(() => {}，1000)
 
-
-
 ## Dom
     # DOM 节点
         文档节点、元素节点、属性节点、文本节点、注释节点
@@ -946,6 +944,15 @@
         let school = {name: '学校'}
         m.set(school, 'xxx')
 
+    # import按需加载:
+        import("./js/count")
+        .then((res)=>{
+            console.log('模块加载成功', res)
+        })
+        .catch((err)=>{
+            console.log('模块加载失败', err)
+        })
+
     #calss 类
         calss Promise{
             name;  //公有属性
@@ -987,10 +994,12 @@
         暴露模块
             分别暴露
                 export function(){}
-            统一暴露
-                export {}
+            
             默认暴露
                 export default name = {}
+                
+            统一暴露
+                export {}
 
         引入模块
             常规暴露
@@ -1004,7 +1013,7 @@
 
 ## Promise
     const p = new Promise((resolve, reject) => {xxx? resolve() : reject();})
-        p.then((value) => {},(reason) => {})
+        p.then((value) => {}, (reason) => {})
 
         // 只能做失败回调
         p.catch(() => {})
