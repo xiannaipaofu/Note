@@ -1,3 +1,7 @@
+## 删除文件包插件
+        npm i rimraf
+        rimraf xxxxnp
+
 ## nprogress 进度条
     npm i nprogress
 

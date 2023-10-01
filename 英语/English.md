@@ -6,38 +6,36 @@
 
         双元音: eɪ aɪ ɔɪ ɪə eə ʊə əʊ aʊ
 
-    Aa  Ee  Ii  Oo  Uu
+    [ i: ]  key     钥匙    [ ɪ ]   fish    鱼      [ eɪ ]
+    [ u: ]  shoes   鞋子    [ ʊ ]   book    书      [ aɪ ]  nignt   夜晚
+    [ ɔ: ]  corn    玉米    [ ɒ ]   watch   手表    [ ɔɪ ]  boy     男孩
+    [ ɑː ]  car     汽车    [ ʌ ]   mother  妈妈    [ ɪə ]  dear    亲爱的
+    [ ɜː ]  skirt   裙子    [ ə ]   teacher 老师    [ eə ]  pear    梨
+                            [ e ]   egg     鸡蛋    [ ʊə ]  sure    肯定的
+                            [ æ ]   hat     帽子    [ əʊ ]  snow    雪
+                                                    [ aʊ ]  house   房子
 
-    [ æ ]   hat     帽子    [ i: ]  key     钥匙    [ eɪ ]  rain        雨
-    [ ʌ ]   mother  妈妈    [ u: ]  shoes   鞋子    [ aɪ ]  nignt       夜晚
-    [ ɪ ]   fish    鱼      [ ɔ: ]  corn    玉米    [ ɔɪ ]  boy         男孩
-    [ e ]   egg     鸡蛋    [ ɑː ]  car     汽车    [ əʊ ]  snow        雪
-    [ ʊ ]   book    书      [ ɜː ]  skirt   裙子    [ eə ]  pear        梨
-    [ ɒ ]   watch   手表                            [ aʊ ]  house       房子
-    [ ə ]   teacher 老师                            [ ɪə ]  dear        亲爱的
-                                                    [ ʊə ]  sure        肯定的
-
-    辅音:
+    辅音:                         嘘
         清辅音: p  t  k  f  θ  s  ʃ  tʃ  tr  ts
         
         浊辅音: b  d  g  v  ð  z  ʒ  dʒ  dr  dz
-
+                                 日
         l  j  w  h  r
 
         m  n  ŋ
 
     发音: 
-        [g] → g  gril     女孩        
-        [j] → y  yo-yo    悠悠球      
-        [t] → t  tea      茶          
-        [v] → v  five     五          
-        [r] → r  rat      老鼠        
-        [ʒ] → s  television电视       
-        [p] → p  pizza    披萨        
-        [d] → d  dog      狗                                      
-        [b] → b  bee      蜜蜂        
-        [l] → l  lock     锁              
-        [m] → m  moon     月亮        
+        [g] → g  gril       女孩
+        [j] → y  yes        是的
+        [t] → t  tea        茶
+        [v] → v  five       五
+        [r] → r  rat      老鼠
+        [ʒ] → s  television电视
+        [p] → p  pizza    披萨
+        [d] → d  dog      狗
+        [b] → b  bee      蜜蜂
+        [l] → l  lock     锁
+        [m] → m  moon     月亮
         [n] → n  nose     鼻子
 
         s   sun     太阳    
@@ -116,11 +114,11 @@
         know  知道  k碰上n时k不发音
 
     开音节: |相对开音节: e结尾
-        a
-        e
-        i
-        o
-        u
+        Aa  Ee  Ii  Oo  Uu
+        
+        
+        
+        
 
     闭音节: 以辅音结尾
         a   [æ]
