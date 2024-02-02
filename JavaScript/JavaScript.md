@@ -612,7 +612,7 @@
         element.clientTop  表示一个元素的顶部border的宽度，以像素表示
 
         element.scrollWidth  返回元素的整个宽度（包括带滚动条的隐蔽的地方）
-        element.scrollHeight  返回整个元素的高度（包括带滚动条的隐蔽的地方）
+        element.scrollHeight  返回元素的整个高度（包括带滚动条的隐蔽的地方）
         element.scrollLeft  返回元素滚动后的左边缘和视图左边缘之间的距离  // 滚动后
         element.scrollTop  返回元素滚动后的顶部边缘和视图顶部边缘之间的距离  // 滚动后
         
@@ -765,17 +765,20 @@
 
 ## BOM
     属性:
-        window.innerWidth  返回当前窗口的宽度(文档区域)
-        window.innerHeight  返回当前窗口的高度(文档区域)
-        window.outerWidth	返回窗口的外部宽度，包含工具条与滚动条(整个窗口)
-        window.outerHeight	返回窗口的外部高度，包含工具条与滚动条(整个窗口)
-        window.pageXOffset  设置或返回当前页面相对于窗口显示区左上角的 X 位置(滚动条)
-        window.pageYOffset  设置或返回当前页面相对于窗口显示区左上角的 Y 位置(滚动条)
-        window.screenLeft  返回相对于屏幕窗口的x坐标(不兼容火狐)
-        window.screenTop  返回相对于屏幕窗口的y坐标(不兼容火狐)
-        window.screenX	返回相对于屏幕窗口的x坐标(不兼容IE)
-        window.screenY	返回相对于屏幕窗口的y坐标(不兼容IE)
-        
+        window.scrollX  获取滚动条滚动后的左边缘和视图左边缘之间的距离  // 滚动后
+        window.scrollY  获取滚动条滚动后的顶部边缘和视图顶部边缘之间的距离  // 滚动后
+
+        window.innerWidth  返回当前窗口显示的宽度(文档区域)
+        window.innerHeight  返回当前窗口显示的高度(文档区域)
+        window.outerWidth  返回当前窗口宽度，包含工具条与滚动条(整个浏览器窗口)
+        window.outerHeight  返回当前窗口高度，包含工具条与滚动条(整个浏览器窗口)
+
+        window.screenLeft  返回窗口相对于屏幕的x坐标(不兼容火狐)
+        window.screenTop  返回窗口相对于屏幕的y坐标(不兼容火狐)
+        window.screenX	返回窗口相对于屏幕的x坐标(不兼容IE)
+        window.screenY	返回窗口相对于屏幕的y坐标(不兼容IE)
+
+
         window.self  返回对当前窗口的引用。等价于Window属性
         window.top  返回最顶层的父窗口
         window.parent  返回父窗口
@@ -787,6 +790,9 @@
         window.length  设置或返回窗口中的frames框架数量
 
     方法:
+        scrollBy(x, y)	按照指定的像素值来滚动内容
+        scrollTo(x, y)	把内容滚动到指定的坐标
+
         JavaScript 弹窗:
             alert()  显示带有一段消息和一个确认按钮的警告框
             confirm()  显示带有一段消息以及确认按钮和取消按钮的对话框
@@ -801,7 +807,7 @@
         
         窗口:
             window.open(url[,opution(宽高)])  打开一个新的浏览器窗口
-            window.window.close()  关闭浏览器窗口
+            window.close()  关闭浏览器窗口
             window.blur()  把键盘焦点从顶层窗口移开(保证新的窗口没有获得焦点)
             window.focus()  把键盘焦点给予一个窗口
             window.getSelection()	获取用户选择的文本范围或光标的当前位置
@@ -810,12 +816,9 @@
             window.resizeTo(x, y)	把窗口的大小调整到指定的宽度和高度
             window.resizeBy(x, y)	按照指定的像素调整窗口的大小
             
-        scrollBy(x, y)	按照指定的像素值来滚动内容
-        scrollTo(x, y)	把内容滚动到指定的坐标
         btoa()	创建一个 base-64 编码的字符串
         atob()	解码一个 base-64 编码的字符串
         print()  打印当前窗口的内容
-
         stop()  停止页面载入
         getComputedStyle(event).width  获取指定元素的 CSS 样式
         matchMedia("(min-width: 700px)").matches  该方法用来检查media query语句
@@ -837,32 +840,37 @@
             sessinStorage.removeItem("key");  移除键
             sessinStorage.clear()  清除存储对象中所有的键
 
-        会话控制
-            session
-            token
-            # Cookie
-                创建:
-                    document.cookie = "username = puff";
-                    您还可以为 cookie 添加一个过期时间（以 UTC 或 GMT 时间）。默认情况下，cookie 在浏览器关闭时删除：
-                    document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT";
-                    您可以使用 path 参数告诉浏览器 cookie 的路径。默认情况下，cookie 属于当前页面。
-                    document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/";
+    ## 会话控制
+        session(用户身份、用户信息)  // 以cookie形式发送给浏览器
+        token(识别用户身份): 主要用于移动端app  npm i jwt  // 便于生成token
+        # Cookie(标记用户、用户主题)
+            按照域名(不同网页)划分保存
+            默认情况下，cookie 在浏览器关闭时删除
 
-                读取:
-                    const myCookie = document.cookie
+            创建:
+                document.cookie = "username = puff";
+                您还可以为 cookie 添加一个过期时间（以 UTC 或 GMT 时间）
+                document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT";
+                您可以使用 path 参数告诉浏览器 cookie 的路径。默认情况下，cookie 属于当前页面。
+                document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/";
 
-                修改:
-                    document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/";  重新赋值
+            读取:
+                const myCookie = document.cookie
 
-                删除:
-                    删除 cookie 非常简单。您只需要设置 expires 参数为以前的时间即可，如下所示，设置为 Thu, 01 Jan 1970 00:00:00 GMT:
-                    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-                    注意，当您删除时不必指定 cookie 的值。
+            修改:
+                document.cookie="username=John Doe; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/";  重新赋值
 
-                JavaScript Cookie 实例
-                    设置 cookie 值的函数
-                    获取 cookie 值的函数
-                    检测 cookie 值的函数
+            删除:
+                删除 cookie 非常简单。您只需要设置 expires 参数为以前的时间即可，如下所示，设置为 Thu, 01 Jan 1970 00:00:00 GMT:
+                document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+                注意，当您删除时不必指定 cookie 的值。
+
+            JavaScript Cookie 实例
+                设置 cookie 值的函数
+                获取 cookie 值的函数
+                检测 cookie 值的函数
+
+    ## 注册账号密码 → 数据库保存 → 用户登录 → 登录成功返回session/token → 验证session/token
 
     # window.location 对象包含有关当前 URL 的信息
         location.href  返回完整的URL/页面跳转  // http://127.0.0.1:5501/html-demo/HTML/index.html

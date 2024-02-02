@@ -72,7 +72,7 @@
         通过https://www.ipaddress.com/ 网查询raw.githubusercontent.com使用的ip地址
             raw.githubusercontent.com
         修改HOSTS文件
-        C:\Windows\System32\drivers\etc 下的hosts
+        C:\Windows\System32\drivers\etc\hosts
              199.232.28.133 raw.githubusercontent.com
 
 ## Buffer缓冲区
@@ -188,71 +188,78 @@
     cosnt threads = os.cpu().length;  // 获取cpu核数
 
 ## express
-    ## 以下几个重要的模块是需要与 express 框架一起安装的：
-    body-parser - node.js 中间件，用于处理 JSON, Raw, Text 和 URL 编码的数据。  *express4.0-4.16版本
-        $ npm i body-parser  获取请求体数据
-            const bodyParser = require('body-parser')
-            var jsonParser = bodyParser.json()  //解析json格式请求体
-            var urlencodedParser = bodyParser.urlencoded({ extended: false })  //解析querystring格式请求体
-            app.ues(bodyParser.json())
-            app.ues(bodyParser.urlencoded({ extended: false }))
+    token - 识别用户身份
+        npm i jsonwebtoken
 
-    cookie-parser - 这就是一个解析Cookie的工具。通过req.cookies可以取到传过来的cookie，并把它们转成对象。
-        $ npm i cookie-parser  解析cookie
-            const cookieParser = require('cookie-parser');
-            app.use(cookieParser())
-            res.cookies
+        const jwt = require('jsonwebtoken')
+        // 生成token
+        let token = jwt.sign(
+            {username: 'tansongyun'},  // 用户数据, 
+            'atguigu',  // 加密字符串
+            {expiresIn: 60}  // 配置对象/秒
+        )
+        // 校验token
+        jwt.verify(token, 'atguigu', (err, data)=>{})
+
+    cookie-parser - 解析Cookie工具
+        npm i cookie-parser
+
+        const cookieParser = require('cookie-parser');
+        app.use(cookieParser())
+        res.cookies
 
     express-session - 生成sid唯一标识
-        $ npm i express-session connect-mongo  生成sid
-            const session = require('express-session')
-            const MongoStore = require('connect-mongo')
-            app.use(session({
-                name: 'sid',  //设置cookie的名字
-                secret: 'atguigu',  //参与加密的字符串(密钥)
-                saveUninitialized: false,  //是否为每次请求都设置一个cookie来存储session的id
-                resave: true,  //是否在每次请求时重新保存seesion
-                store: MongoStore.create({
-                    mongoUrl: 'mongodb://127.0.0.1:27017/project',  //数据库的链接配置
-                }),
-                cookie: {
-                    httpOnly: true,  //开启后前端无法通过JS操作
-                    maxAge: 1000 * 300  //控制cookie生命周期
-                }
-            }))
+        npm i express-session connect-mongo
 
-    http-proxy-middleware  代理服务器中间件
+        const session = require('express-session')
+        const MongoStore = require('connect-mongo')
+        app.use(session({
+            name: 'sid',  // 设置cookie的名字
+            secret: 'atguigu',  // 参与加密的字符串(密钥)
+            saveUninitialized: false,  // 是否为每次请求都设置一个cookie来存储session的id
+            resave: true,  // 是否在每次请求时重新刷新seesion过期时间
+            store: MongoStore.create({
+                mongoUrl: 'mongodb://127.0.0.1:27017/project',  // 数据库的链接配置
+            }),
+            cookie: {
+                httpOnly: true,  // 开启后前端无法通过JS操作
+                maxAge: 1000 * 30  // 控制cookie生命周期
+            }
+        }))
+
+        req.session.username = 'admin'  // 设置用户信息
+        req.session.destroy(()=>{})  // 销毁session
+
+    http-proxy-middleware - 代理服务器中间件
         $ npm i http-proxy-middleware 
-                const express = require('express')
-                const app = express()
-                const { createProxyMiddleware } = require('http-proxy-middleware');
-                app.use(
-                    '/api',
-                    createProxyMiddleware({
-                        target: 'http://127.0.0.1:8080',
-                        pathRewrite: {'^/api' : '/api/new-path'},  //重写路径
-                        changeOrigin: true,  //用于控制请求头中host的值
-                        ws: true,  //用于支持websockets
-                        router: {
-                            // when request.headers.host == 'dev.localhost:3000', 
-                            // override target 'http://www.example.org' to 'http://localhost:8000' 
-                            'dev.localhost:3000' : 'http://localhost:8000'
-                        }
-                    })
-                );
-                app.listen(3000)
+        
+        const { createProxyMiddleware } = require('http-proxy-middleware');
+        app.use('/api', createProxyMiddleware({
+                target: 'http://127.0.0.1:8080',
+                pathRewrite: {'^/api' : '/api/new-path'},  //重写路径
+                changeOrigin: true,  //用于控制请求头中host的值
+                ws: true,  //用于支持websockets
+                router: {
+                    // when request.headers.host == 'dev.localhost:3000', 
+                    // override target 'http://www.example.org' to 'http://localhost:8000' 
+                    'dev.localhost:3000' : 'http://localhost:8000'
+                }
+            })
+        );
 
     ## 使用步骤:
         npm i express -g
-        npm i nodemon -g  // 服务器自动重启工具
+        npm i nodemon -g  // 服务器自动重启工具  nodemon ./xxx.js
             
         const express = require('express')  // 引入模块
         const app = express()
 
+        // 解析数据格式
+        app.ues(bodyParser.json())
+        app.ues(bodyParser.urlencoded({ extended: false }))
+
         function recordMiddleware(req, res, next){ next()}  // 全局中间件
-        
         app.use(recordMiddleware)  // 使用中间件
-        app.use(express.static(__dirname + '/public'))  // 静态资源中间件,文件夹目录
 
         app.<method>(path, callback(request, reponse)=>{}) // 路由
         app.listen(8000, (err)=>{})  // 监听端口
@@ -262,16 +269,17 @@
             console.log(req.url)  // 请求路径以及查询字符串  /api
             console.log(req.path)  // 请求路径  /api
             console.log(req.query)  // 请求参数
-            console.log(req.params)  // 路由参数
+            console.log(req.params)  // 路由参数  :id,占位符
             console.log(req.ip)  // 请求ip
             console.log(req.headers)  // 所有的请求头
             console.log(req.get('host'))  //host请求头  localhost:8000
+            req.body  // 获取请求体
+            req.cookies  // 获取cookie
+            req.user = data  // 保存用户信息
 
             req.httpVersion  // http版本
             req.hostname  // localhost
             req.baseUrl
-            req.body
-            req.cookies
             req.originalUrl  http
             
             Methods
@@ -285,26 +293,22 @@
             req.range()
 
     ## response:
-        res.statusCode = 404  // 设置状态码
+        res.statusCode = 404  // 设置状态码,res.status(404)
         res.statusMessage = 'xxx'  // 响应描述
         res.set('Access-Control-Allow-Origin','*')  // 设置响应头 设置允许跨域
         res.set('Access-Control-Allow-Headers','*')  // 设置响应头 允许自定义
         res.write('响应体')  拼接res.end
-        res.end('xxx')
+        res.end('xxx')  // 设置响应,res.send()
 
         Methods
-        res.set()  设置响应头
-        res.cookie()
-        res.clearCookie()
         res.json()  响应json
-        res.send()  设置响应
-        res.status(500)  设置响应状态码
-        res.end()  设置响应
-        res.render()  响应模板
         res.sendFile(__dirname + '/file')  响应文件内容
         res.download(__dirname + '/file')  下载响应
-        res.redirect('url')  重定向
+        res.redirect('/home')  重定向
+        res.render()  响应模板
 
+        res.cookie('name', 'weiwenhuaming', {maxAge: 7*24*60*60*1000})  // 返回cookie, 七天免登陆
+        res.clearCookie('name')  // 删除cookie
         res.append()
         res.attachment()
         res.format()
@@ -316,18 +320,23 @@
         res.type()
         res.vary()
 
+    ## 静态资源中间件
+        app.use(express.static(__dirname + '/public'))  // 文件夹目录
 
-    路由模块化
+    ## 防盗链
+        携带域名请求头,实现防盗效果
+
+    ## 路由模块化
         const express = require('express')
         const router = express.Router()
         routrer.get('/', callback)
         module.exports = router
 
-        引入
+        express.js:
             const homeRouter = require('./')
             app.use(homeRouter)
 
-    模板引擎EJS
+    ## 模板引擎EJS
         分离用户界面和业务数据的一种技术
         npm i ejs
         const ejs = require('ejs')
@@ -340,19 +349,12 @@
                 <%  ......  %>
                 <%  ...  %>
 
-        // 设置当前express使用的模板引擎为jade(pug|twing|ejs)
-        app.set('view engine', 'jade');
-        // 设置模板引擎文件存放位置
-        app.set('views', path.resolve(__dirname, 'views'));
+        app.set('view engine', 'jade');  // 设置当前express使用的模板引擎为jade(pug|twing|ejs)
+        app.set('views', path.resolve(__dirname, 'views'));  // 设置模板引擎文件存放位置
 
-        res.render('模板文件名', '数据')
+        res.render('模板文件名', {data})  // 响应模板
 
-    express快速生成工具express-generator
-        npm i -g express-generator
-        express -e name
-        npm i
-
-    文件上传处理
+    ## 文件上传处理
         npm i formidable
         const formidable = require('formidable')
         app.post('', (req, res)=>{
@@ -374,8 +376,6 @@
                 res.json({fields, files})
             })
         })
-
-    ## cmd ipconfig  //当下ip地址
         
 ## linux
     linux:  /根目录
@@ -414,3 +414,5 @@
         cd  切换目录
 
     /r/n  换行
+
+    cmd ipconfig  //当下ip地址
