@@ -1,6 +1,13 @@
+## less-loader
+    npm i less-loader
+
+## animate.css 动画库
+    npm i anitate.css
+    import 'anitate.css'
+
 ## 删除文件包插件
-        npm i rimraf
-        rimraf xxxxnp
+    npm i rimraf
+    rimraf xxxxnp
 
 ## nprogress 进度条
     npm i nprogress
