@@ -366,8 +366,8 @@
             })
 
     ## API
-        读取vuex中的数据：$store.state.sum
-        修改vuex中的数据：$store.dispatch('函数',数据)或$store.commit('函数',数据)
+        读取vuex中的数据：this.$store.state.sum
+        修改vuex中的数据：this.$store.dispatch('函数',数据)或$store.commit('函数',数据)
 
         function(context){}:小仓库
 

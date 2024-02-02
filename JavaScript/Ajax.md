@@ -39,6 +39,11 @@
         request.on('end', ()=>{console.log(body), res.end('')})
 
 ## ajax
+    ## 接口测试工具
+        apipost
+        apifox
+        postman
+
     ## 发送AJAX
         xhr = new XMLHttpRequest();  // 创建对象
         xhr.open('get', 'url');  //设置请求方法和url
